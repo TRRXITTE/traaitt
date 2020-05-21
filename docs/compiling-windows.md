@@ -38,7 +38,7 @@ You can build for 32-bit or 64-bit Windows. **If you're not sure, pick 64-bit.**
 For 64-bit:
 
 -   From the start menu, open **x64 Native Tools Command Prompt for VS 2019**.
--   `cd <your_turtlecoin_directory>`
+-   `cd <your_traaitt_directory>`
 -   `mkdir build`
 -   `cd build`
 -   `cmake -G "Visual Studio 16 2019" -A x64 .. -DBOOST_ROOT=C:/local/boost_1_69_0`
