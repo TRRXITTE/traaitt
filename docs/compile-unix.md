@@ -1,4 +1,4 @@
-![image](![image](https://github.com/TRRXITTE/traaitt/blob/master/docs/XTE.png?raw=true))
+![image](https://github.com/TRRXITTE/traaitt/blob/master/docs/XTE.png)
 
 #### traaitt [XTE] is a fast, and easy way to send money to friends and businesses
 
