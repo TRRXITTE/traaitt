@@ -480,7 +480,7 @@ int main(int argc, char *argv[])
             dch.stop_handling();
         });
 
-        logger(INFO, BRIGHT_YELLOW) << "Starting P2P network loop...";
+        logger(INFO, YELLOW) << "Starting P2P network loop...";
         p2psrv->run();
         logger(INFO) << "p2p net loop stopped";
 
