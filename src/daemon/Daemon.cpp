@@ -281,7 +281,7 @@ int main(int argc, char *argv[])
 
         logger(INFO, BRIGHT_MAGENTA) << getProjectCLIHeader() << std::endl;
 
-        logger(INFO, BRIGHT_YELLOW) << "Program Working Directory: " << cwdPath;
+        logger(INFO, YELLOW) << "Program Working Directory: " << cwdPath;
 
         // create objects and link them
         CryptoNote::CurrencyBuilder currencyBuilder(logManager);
@@ -380,7 +380,7 @@ int main(int argc, char *argv[])
         }
 
         System::Dispatcher dispatcher;
-        logger(INFO, BRIGHT_YELLOW) << "Initializing core...";
+        logger(INFO, YELLOW) << "Initializing core...";
 
         std::unique_ptr<IMainChainStorage> tmainChainStorage = createSwappedMainChainStorage(config.dataDirectory, currency);
 
