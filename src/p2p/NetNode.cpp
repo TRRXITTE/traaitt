@@ -997,7 +997,7 @@ namespace CryptoNote
 
                 if (++try_count > m_seed_nodes.size())
                 {
-                    logger(ERROR) << "Failed to connect to any of seed peers, continuing without seeds";
+                    logger(ERROR, BRIGHT_RED) << "Failed to connect to any of seed peers, continuing without seeds";
                     break;
                 }
                 if (++current_index >= m_seed_nodes.size())
