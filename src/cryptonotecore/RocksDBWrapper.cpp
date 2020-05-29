@@ -49,7 +49,7 @@ void RocksDBWrapper::init(const DataBaseConfig &config)
     }
     else if (!status.ok() && status.IsInvalidArgument())
     {
-        logger(INFO, WHITE) << "Database not found in " << dataDir << ". Creating new DB...";
+        logger(INFO, BRIGHT_RED) << "Database not found in " << dataDir << ". Creating new DB...";
         dbOptions.create_if_missing = true;
         rocksdb::Status status = rocksdb::DB::Open(dbOptions, dataDir, &dbPtr);
         if (!status.ok())
