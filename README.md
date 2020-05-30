@@ -2,7 +2,7 @@
 
 #### traaitt [XTE] is a fast, easy to use and private decentralized cryptocurrency combined with a powerful ecosystem and multiple integrational software distributions.
 
-[![Discord](https://img.shields.io/discord/388915017187328002?label=traaittXTE%20Discord)](https://discord.gg/cXJBsJ6) [![GitHub All Releases](https://img.shields.io/github/downloads/TRRXITTE/traaitt/total?label=Downloads)](https://github.com/TRRXITTE/traaitt/releases) [![GitHub contributors](https://img.shields.io/github/contributors-anon/TRRXITTE/traaitt?label=Contributors)](https://github.com/TRRXITTE/traaitt/graphs/contributors) [![GitHub issues](https://img.shields.io/github/issues/TRRXITTE/traaitt?label=Issues)](https://github.com/TRRXITTE/traaitt/issues) ![GitHub stars](https://img.shields.io/github/stars/TRRXITTE/traaitt?label=Github%20Stars)
+[![Discord](https://img.shields.io/discord/388915017187328002?label=traaittXTE%20Discord)](https://discord.gg/cXJBsJ6) [![GitHub All Releases](https://img.shields.io/github/downloads/TRRXITTE/traaitt/total?label=Downloads)](https://github.com/TRRXITTE/traaitt/releases) [![GitHub contributors](https://img.shields.io/github/contributors-anon/TRRXITTE/traaitt?label=Contributors)](https://github.com/TRRXITTE/traaitt/graphs/contributors) [![GitHub issues](https://img.shields.io/github/issues/TRRXITTE/traaitt?label=Issues)](https://github.com/TRRXITTE/traaitt/issues) [!GitHub stars](https://img.shields.io/github/stars/TRRXITTE/traaitt?label=Github%20Stars)
 <img src="https://github.com/TRRXITTE/traaitt/blob/master/include/traaittxte.jpg">
 ### Contributing to traaitt [XTE]
 
