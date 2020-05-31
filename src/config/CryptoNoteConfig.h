@@ -119,11 +119,11 @@ namespace CryptoNote
         const uint64_t MAXIMUM_MIXIN_V3 = 17;
 
         /* The heights to activate the mixin limits at */
-        const uint32_t MIXIN_LIMITS_V1_HEIGHT = 1000000;
+        const uint32_t MIXIN_LIMITS_V1_HEIGHT = 17000000;
 		
-        const uint32_t MIXIN_LIMITS_V2_HEIGHT = 4227000;
+        const uint32_t MIXIN_LIMITS_V2_HEIGHT = 42270000;
 
-        const uint32_t MIXIN_LIMITS_V3_HEIGHT = 8447000;
+        const uint32_t MIXIN_LIMITS_V3_HEIGHT = 84470000;
 
         /* The mixin to use by default with zedwallet and turtle-service */
         /* DEFAULT_MIXIN_V0 is the mixin used before MIXIN_LIMITS_V1_HEIGHT is started */
@@ -194,11 +194,11 @@ namespace CryptoNote
         /* For new projects forked from this code base, the values immediately below
            should be changed to 0 to prevent issues with transaction processing
            and other possible unexpected behavior */
-        const uint64_t TRANSACTION_SIGNATURE_COUNT_VALIDATION_HEIGHT = 1400000;
+        const uint64_t TRANSACTION_SIGNATURE_COUNT_VALIDATION_HEIGHT = 0;
 
-        const uint64_t BLOCK_BLOB_SHUFFLE_CHECK_HEIGHT = 1600000;
+        const uint64_t BLOCK_BLOB_SHUFFLE_CHECK_HEIGHT = 0;
 
-        const uint64_t TRANSACTION_INPUT_BLOCKTIME_VALIDATION_HEIGHT = 1600000;
+        const uint64_t TRANSACTION_INPUT_BLOCKTIME_VALIDATION_HEIGHT = 0;
 
         /* This describes how many blocks of "wiggle" room transactions have regarding
            when the outputs can be spent based on a reasonable belief that the outputs
