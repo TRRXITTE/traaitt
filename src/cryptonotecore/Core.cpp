@@ -2461,14 +2461,14 @@ namespace CryptoNote
 
         if (storageBlocksCount > dbBlocksCount)
         {
-            logger(Logging::INFO, BRIGHT_GREEN) << "Importing blocks from blockchain storage";
+            logger(Logging::INFO) << "Importing blocks from blockchain storage";
             importBlocksFromStorage();
         }
         else if (storageBlocksCount < dbBlocksCount)
         {
             auto cutFrom = findCommonRoot(*mainChainStorage, *chainsLeaves[0]) + 1;
 
-            logger(Logging::INFO, BRIGHT_GREEN) << "Database has more blocks than blockchain storage: "
+            logger(Logging::INFO) << "Database has more blocks than blockchain storage: "
                                   << cutFrom;
             cutSegment(*chainsLeaves[0], cutFrom);
 
@@ -2478,7 +2478,7 @@ namespace CryptoNote
             getBlockHash(mainChainStorage->getBlockByIndex(storageBlocksCount - 1))
             != chainsLeaves[0]->getTopBlockHash())
         {
-            logger(Logging::INFO, BRIGHT_RED) << "Blockchain storage and root segment are on different chains. "
+            logger(Logging::INFO) << "Blockchain storage and root segment are on different chains. "
                                   << "Cutting root segment to common block index "
                                   << findCommonRoot(*mainChainStorage, *chainsLeaves[0]) << " and reimporting blocks";
             importBlocksFromStorage();
