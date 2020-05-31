@@ -2461,7 +2461,7 @@ namespace CryptoNote
 
         if (storageBlocksCount > dbBlocksCount)
         {
-            logger(Logging::INFO) << "Importing blocks from blockchain storage";
+            logger(Logging::INFO, BRIGHT_GREEN) << "Importing blocks from blockchain storage";
             importBlocksFromStorage();
         }
         else if (storageBlocksCount < dbBlocksCount)
