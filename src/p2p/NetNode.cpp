@@ -1,7 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 // Copyright (c) 2019, The CyprusCoin Developers
 //
 // Please see the included LICENSE file for more information.
@@ -98,24 +97,24 @@ namespace
                         "0")
                     != 0)
                 {
-                    logger(ERROR) << "UPNP_AddPortMapping failed.";
+                    logger(ERROR, BRIGHT_RED) << "UPNP_AddPortMapping failed.";
                 }
                 else
                 {
-                    logger(INFO) << "Added IGD port mapping.";
+                    logger(INFO, BRIGHT_GREEN) << "Added IGD port mapping.";
                 }
             }
             else if (result == 2)
             {
-                logger(INFO, BRIGHT_RED) << "IGD was found but reported as not connected.";
+                logger(INFO, BRIGHT_YELLOW) << "IGD was found but reported as not connected.";
             }
             else if (result == 3)
             {
-                logger(INFO) << "UPnP device was found but not recognized as IGD.";
+                logger(INFO, BRIGHT_YELLOW) << "UPnP device was found but not recognized as IGD.";
             }
             else
             {
-                logger(ERROR) << "UPNP_GetValidIGD returned an unknown result code.";
+                logger(ERROR, BRIGHT_YELLOW) << "UPNP_GetValidIGD returned an unknown result code.";
             }
 
             FreeUPNPUrls(&urls);
@@ -264,7 +263,7 @@ namespace CryptoNote
 #define INVOKE_HANDLER(CMD, Handler)                                                           \
     case CMD::ID:                                                                              \
     {                                                                                          \
-        ret = invokeAdaptor<CMD>(cmd.buf, out, ctx, std::bind(Handler, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4)); \
+        ret = invokeAdaptor<CMD>(cmd.buf, out, ctx, std::bind(Handler, this, _1, _2, _3, _4)); \
         break;                                                                                 \
     }
 
@@ -412,7 +411,7 @@ namespace CryptoNote
     bool NodeServer::make_default_config()
     {
         m_config.m_peer_id = Random::randomValue<uint64_t>();
-        logger(INFO, BRIGHT_WHITE) << "Generated new peer ID: " << m_config.m_peer_id;
+        logger(INFO, BRIGHT_GREEN) << "Generated new peer ID: " << m_config.m_peer_id;
         return true;
     }
 
@@ -556,11 +555,11 @@ namespace CryptoNote
 
         m_stopEvent.wait();
 
-        logger(INFO) << "Stopping NodeServer and its " << m_connections.size() << " connections...";
+        logger(INFO, BRIGHT_RED) << "Stopping NodeServer and its " << m_connections.size() << " connections...";
         safeInterrupt(m_workingContextGroup);
         m_workingContextGroup.wait();
 
-        logger(INFO) << "NodeServer loop stopped";
+        logger(INFO, BRIGHT_RED) << "NodeServer loop stopped";
         return true;
     }
 
@@ -871,7 +870,7 @@ namespace CryptoNote
 
             if (just_take_peerlist)
             {
-                logger(Logging::DEBUGGING, Logging::BRIGHT_MAGENTA) << ctx << "CONNECTION HANDSHAKED OK AND CLOSED.";
+                logger(Logging::DEBUGGING, Logging::BRIGHT_GREEN) << ctx << "CONNECTION HANDSHAKED OK AND CLOSED.";
                 return true;
             }
 
@@ -1133,7 +1132,9 @@ namespace CryptoNote
         {
             return false;
         }
-
+        logger(Logging::TRACE) << context << "REMOTE PEERLIST: TIME_DELTA: " << delta
+                               << ", remote peerlist size=" << peerlist_.size();
+        logger(Logging::TRACE) << context << "REMOTE PEERLIST: " << print_peerlist_to_string(peerlist_);
         return m_peerlist.merge_peerlist(peerlist_);
     }
     //-----------------------------------------------------------------------------------
@@ -1454,7 +1455,7 @@ namespace CryptoNote
         get_local_node_data(rsp.node_data);
         m_payload_handler.get_payload_sync_data(rsp.payload_data);
 
-        logger(Logging::DEBUGGING, Logging::BRIGHT_MAGENTA) << "COMMAND_HANDSHAKE";
+        logger(Logging::DEBUGGING, Logging::BRIGHT_GREEN) << "COMMAND_HANDSHAKE";
         return 1;
     }
     //-----------------------------------------------------------------------------------

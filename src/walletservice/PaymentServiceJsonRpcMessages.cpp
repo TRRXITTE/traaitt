@@ -1,7 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -296,16 +295,9 @@ namespace PaymentService
 
         serializer(changeAddress, "changeAddress");
 
-        uint64_t fixedFee;
-        double feePerByte;
-
-        if (serializer(fixedFee, "fee"))
+        if (!serializer(fee, "fee"))
         {
-            fee = WalletTypes::FeeType::FixedFee(fixedFee);
-        }
-        else if (serializer(feePerByte, "feePerByte"))
-        {
-            fee = WalletTypes::FeeType::FeePerByte(feePerByte);
+            throw RequestSerializationError();
         }
 
         if (!serializer(anonymity, "anonymity"))
@@ -327,7 +319,6 @@ namespace PaymentService
     void SendTransaction::Response::serialize(CryptoNote::ISerializer &serializer)
     {
         serializer(transactionHash, "transactionHash");
-        serializer(fee, "fee");
     }
 
     void CreateDelayedTransaction::Request::serialize(CryptoNote::ISerializer &serializer, const WalletService &service)
@@ -341,16 +332,9 @@ namespace PaymentService
 
         serializer(changeAddress, "changeAddress");
 
-        uint64_t fixedFee;
-        double feePerByte;
-
-        if (serializer(fixedFee, "fee"))
+        if (!serializer(fee, "fee"))
         {
-            fee = WalletTypes::FeeType::FixedFee(fixedFee);
-        }
-        else if (serializer(feePerByte, "feePerByte"))
-        {
-            fee = WalletTypes::FeeType::FeePerByte(feePerByte);
+            throw RequestSerializationError();
         }
 
         if (!serializer(anonymity, "anonymity"))
@@ -372,7 +356,6 @@ namespace PaymentService
     void CreateDelayedTransaction::Response::serialize(CryptoNote::ISerializer &serializer)
     {
         serializer(transactionHash, "transactionHash");
-        serializer(fee, "fee");
     }
 
     void GetDelayedTransactionHashes::Request::serialize(CryptoNote::ISerializer &serializer) {}

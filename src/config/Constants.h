@@ -1,5 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -197,9 +196,6 @@ namespace Constants
 
     /* Indicates the following data is a merge mine depth+merkle root */
     const uint8_t TX_EXTRA_MERGE_MINING_IDENTIFIER = 0x03;
-
-    /* Indicates the following data is arbitrary data in tx_extra */
-    const uint8_t TX_EXTRA_ARBITRARY_DATA_IDENTIFIER = 0x7f;
 
     const Crypto::Hash NULL_HASH = Crypto::Hash({
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

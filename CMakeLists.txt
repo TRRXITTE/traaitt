@@ -282,14 +282,6 @@ endif ()
 
 find_package(OpenSSL)
 
-if (NOT OPENSSL_FOUND)
-    find_package(PkgConfig)
-
-    if (PKG_CONFIG_FOUND)
-        pkg_search_module(OPENSSL openssl)
-    endif()
-endif()
-
 if (OPENSSL_FOUND)
     ## On non MSVC build systems, we need to link ldl with the static OpenSSL library
     if (NOT MSVC)
@@ -310,7 +302,7 @@ add_subdirectory(src)
 ## We need to setup the RocksDB build environment to match our system
 if (NOT MSVC)
     execute_process(
-            COMMAND ${CMAKE_COMMAND} ${CMAKE_CURRENT_SOURCE_DIR}/external/rocksdb -DARCH=${ARCH} -DWITH_ZSTD=${WITH_ZSTD} -DWITH_LZ4=${WITH_LZ4} -DWITH_GFLAGS=0 -DCMAKE_BUILD_TYPE=MinSizeRel -DWITH_TESTS=OFF -DWITH_TOOLS=OFF -DPORTABLE=ON -B${PROJECT_BINARY_DIR}/rocksdb
+            COMMAND cmake ${CMAKE_CURRENT_SOURCE_DIR}/external/rocksdb -DARCH=${ARCH} -DWITH_ZSTD=${WITH_ZSTD} -DWITH_LZ4=${WITH_LZ4} -DWITH_GFLAGS=0 -DCMAKE_BUILD_TYPE=MinSizeRel -DWITH_TESTS=OFF -DWITH_TOOLS=OFF -DPORTABLE=ON -B${PROJECT_BINARY_DIR}/rocksdb
     )
     set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${PROJECT_BINARY_DIR}/rocksdb/librocksdb.a")
 endif ()

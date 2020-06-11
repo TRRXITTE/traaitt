@@ -1,6 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -37,7 +36,7 @@ void RocksDBWrapper::init(const DataBaseConfig &config)
 
     std::string dataDir = getDataDir(config);
 
-    logger(INFO, BRIGHT_MAGENTA) << "0pening Database in " << dataDir;
+    logger(INFO,BRIGHT_MAGENTA) << "Opening Database in " << dataDir;
 
     rocksdb::DB *dbPtr;
 
@@ -49,23 +48,23 @@ void RocksDBWrapper::init(const DataBaseConfig &config)
     }
     else if (!status.ok() && status.IsInvalidArgument())
     {
-        logger(INFO, BRIGHT_RED) << "Database not found in " << dataDir << ". Creating new DB...";
+        logger(INFO, BRIGHT_RED) << "Database not found in " << dataDir << ". Creating new Database...";
         dbOptions.create_if_missing = true;
         rocksdb::Status status = rocksdb::DB::Open(dbOptions, dataDir, &dbPtr);
         if (!status.ok())
         {
-            logger(ERROR, BRIGHT_RED) << "Database Error, It can't be created in " << dataDir << ". Error: " << status.ToString();
+            logger(ERROR, BRIGHT_RED) << "DB Error. DB can't be created in " << dataDir << ". Error: " << status.ToString();
             throw std::system_error(make_error_code(CryptoNote::error::DataBaseErrorCodes::INTERNAL_ERROR));
         }
     }
     else if (status.IsIOError())
     {
-        logger(ERROR, BRIGHT_RED) << "Database Error, It can't be opened in " << dataDir << ". Error: " << status.ToString();
+        logger(ERROR, BRIGHT_RED) << "DB Error. DB can't be opened in " << dataDir << ". Error: " << status.ToString();
         throw std::system_error(make_error_code(CryptoNote::error::DataBaseErrorCodes::IO_ERROR));
     }
     else
     {
-        logger(ERROR, BRIGHT_RED) << "Database Error, It can't be opened in " << dataDir << ". Error: " << status.ToString();
+        logger(ERROR, BRIGHT_RED) << "DB Error. DB can't be opened in " << dataDir << ". Error: " << status.ToString();
         throw std::system_error(make_error_code(CryptoNote::error::DataBaseErrorCodes::INTERNAL_ERROR));
     }
 
@@ -107,7 +106,7 @@ void RocksDBWrapper::destroy(const DataBaseConfig &config)
     }
     else
     {
-        logger(ERROR) << "Database Error, It can't be destroyed in " << dataDir << ". Error: " << status.ToString();
+        logger(ERROR) << "DB Error. DB can't be destroyed in " << dataDir << ". Error: " << status.ToString();
         throw std::system_error(make_error_code(CryptoNote::error::DataBaseErrorCodes::INTERNAL_ERROR));
     }
 }
@@ -144,7 +143,7 @@ std::error_code RocksDBWrapper::write(IWriteBatch &batch, bool sync)
 
     if (!status.ok())
     {
-        logger(ERROR, BRIGHT_RED) << "Can't write to Database. " << status.ToString();
+        logger(ERROR) << "Can't write to DB. " << status.ToString();
         return make_error_code(CryptoNote::error::DataBaseErrorCodes::INTERNAL_ERROR);
     }
     else
@@ -183,48 +182,6 @@ std::error_code RocksDBWrapper::read(IReadBatch &batch)
             return make_error_code(CryptoNote::error::DataBaseErrorCodes::INTERNAL_ERROR);
         }
         resultStates.push_back(status.ok());
-    }
-
-    batch.submitRawResult(values, resultStates);
-    return std::error_code();
-}
-
-std::error_code RocksDBWrapper::readThreadSafe(IReadBatch &batch)
-{
-    if (state.load() != INITIALIZED)
-    {
-        throw std::runtime_error("Not initialized.");
-    }
-
-    rocksdb::ReadOptions readOptions;
-
-    std::vector<std::string> rawKeys(batch.getRawKeys());
-
-    std::vector<std::string> values(rawKeys.size());
-
-    std::vector<bool> resultStates;
-
-    int i = 0;
-
-    for (const std::string &key : rawKeys)
-    {
-        const rocksdb::Status status = db->Get(readOptions, rocksdb::Slice(key), &values[i]);
-
-        if (status.ok())
-        {
-            resultStates.push_back(true);
-        }
-        else
-        {
-            if (!status.IsNotFound())
-            {
-                return make_error_code(CryptoNote::error::DataBaseErrorCodes::INTERNAL_ERROR);
-            }
-
-            resultStates.push_back(false);
-        }
-
-        i++;
     }
 
     batch.submitRawResult(values, resultStates);

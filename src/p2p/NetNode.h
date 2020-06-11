@@ -1,6 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 // Copyright (c) 2019, The CyprusCoin Developers
 //
 // Please see the included LICENSE file for more information.
@@ -144,8 +143,6 @@ namespace CryptoNote
             System::Dispatcher &dispatcher,
             CryptoNote::CryptoNoteProtocolHandler &payload_handler,
             std::shared_ptr<Logging::ILogger> log);
-
-        ~NodeServer() {};
 
         bool run();
 

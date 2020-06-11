@@ -1,7 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -61,8 +60,8 @@ namespace CryptoNote
         static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
         const char GENESIS_COINBASE_TX_HEX[] =
-            "012801ff000180f0f8bfa2970a023bda4171b32ce63b1424ea2df9d13371668e723a8805540cc1c3446bf84e1ed62101018d16dedd4fb67a"
-            "99696e1535a50ca8420fa61143574f3e46ff41a3c3097bca";
+         "012801ff000180f0f8bfa2970a023bda4171b32ce63b1424ea2df9d13371668e723a8805540cc1c3446bf84e1ed62101018d16dedd4fb67a"
+         "99696e1535a50ca8420fa61143574f3e46ff41a3c3097bca";
 
         static_assert(
             sizeof(GENESIS_COINBASE_TX_HEX) / sizeof(*GENESIS_COINBASE_TX_HEX) != 1,
@@ -87,35 +86,19 @@ namespace CryptoNote
 
         const size_t CRYPTONOTE_DISPLAY_DECIMAL_POINT = 2;
 
-        /* TODO: Remove? */
         const uint64_t MINIMUM_FEE = UINT64_C(10);
-
-        /* Fee per byte is rounded up in chunks. This helps makes estimates
-         * more accurate. It's suggested to make this a power of two, to relate
-         * to the underlying storage cost / page sizes for storing a transaction. */
-        const uint64_t FEE_PER_BYTE_CHUNK_SIZE = 256;
-
-        /* Fee to charge per byte of transaction. Will be applied in chunks, see
-         * above. This value comes out to 1.953125. We use this value instead of
-         * something like 2 because it makes for pretty resulting fees
-         * - 5 TRTL vs 5.12 TRTL. You can read this as.. the fee per chunk
-         * is 500 atomic units. The fee per byte is 500 / chunk size. */
-        const double MINIMUM_FEE_PER_BYTE_V1 = 500.00 / FEE_PER_BYTE_CHUNK_SIZE;
-        
-        /* Height for our first fee to byte change to take effect. */
-        const uint64_t MINIMUM_FEE_PER_BYTE_V1_HEIGHT = 144;
 
         /* This section defines our minimum and maximum mixin counts required for transactions */
         const uint64_t MINIMUM_MIXIN_V1 = 0;
-
+        
         const uint64_t MAXIMUM_MIXIN_V1 = 100;
-		
+               
         const uint64_t MINIMUM_MIXIN_V2 = 4;
-		
-		const uint64_t MAXIMUM_MIXIN_V2 = 7;
-
+                
+        const uint64_t MAXIMUM_MIXIN_V2 = 7;
+        
         const uint64_t MINIMUM_MIXIN_V3 = 8;
-
+    
         const uint64_t MAXIMUM_MIXIN_V3 = 17;
 
         /* The heights to activate the mixin limits at */
@@ -182,14 +165,14 @@ namespace CryptoNote
         /* 25 trillion atomic, or 250 billion TRTL -> Max supply / mixin+1 outputs */
         /* This is enforced on the daemon side. An output > 250 billion causes
          * an invalid block. */
-        const uint64_t MAX_OUTPUT_SIZE_NODE   = 227'000'000'000'00;
+        const uint64_t MAX_OUTPUT_SIZE_NODE   = 250'000'000'000'00;
 
         /* 100 billion atomic, or 1 billion TRTL */
         /* This is enforced on the client side. An output > 1 billion will not
          * be created in a transaction */
         const uint64_t MAX_OUTPUT_SIZE_CLIENT = 1'447'000'000'00;
 
-        const uint64_t MAX_OUTPUT_SIZE_HEIGHT = 1000000;
+        const uint64_t MAX_OUTPUT_SIZE_HEIGHT = 2000000;
 
         /* For new projects forked from this code base, the values immediately below
            should be changed to 0 to prevent issues with transaction processing
@@ -220,16 +203,6 @@ namespace CryptoNote
 
         const size_t FUSION_TX_MIN_IN_OUT_COUNT_RATIO = 4;
 
-        /* This sets the maximum number of fusion transactions that can be present in the pool
-           at any given time. Incoming fusion transactions that attempt to exceed this limit
-           will be rejected from the pool and will not be added. This mechanism is in place
-           to help curtail fusion transaction spam. */
-        const size_t FUSION_TX_MAX_POOL_COUNT = 20;
-
-        const size_t NORMAL_TX_MAX_OUTPUT_COUNT_V1 = 90;
-
-        const size_t NORMAL_TX_MAX_OUTPUT_COUNT_V1_HEIGHT = 2200000;
-
         const uint32_t UPGRADE_HEIGHT_V2 = 1;
 
         const uint32_t UPGRADE_HEIGHT_V3 = 2;
@@ -250,11 +223,14 @@ namespace CryptoNote
 
         /* Block heights we are going to have hard forks at */
         const uint64_t FORK_HEIGHTS[] = {
-                    1, // 1
-                    1000000, // 2
-                    4227000, // 4
-                    8447000, // 7
-                };
+            1, // 1
+            1000000, // 2
+            2000000, // 3
+            3000000, // 4
+            4000000, // 5
+            5000000, // 6
+            6000000, // 7
+        };
 
         /* MAKE SURE TO UPDATE THIS VALUE WITH EVERY MAJOR RELEASE BEFORE A FORK */
         const uint64_t SOFTWARE_SUPPORTED_FORK_INDEX = 1;
@@ -318,9 +294,9 @@ namespace CryptoNote
     const uint64_t BLOCKS_SYNCHRONIZING_DEFAULT_COUNT = 100; // by default, blocks count in blocks downloading
     const size_t COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT = 1000;
 
-    const int P2P_DEFAULT_PORT = 44764;
+    const int P2P_DEFAULT_PORT = 14475;
 
-    const int RPC_DEFAULT_PORT = 44788;
+    const int RPC_DEFAULT_PORT = 14478;
 
     const int SERVICE_DEFAULT_PORT = 8447;
 
@@ -330,9 +306,9 @@ namespace CryptoNote
 
     // P2P Network Configuration Section - This defines our current P2P network version
     // and the minimum version for communication between nodes
-    const uint8_t P2P_CURRENT_VERSION = 9;
+    const uint8_t P2P_CURRENT_VERSION = 7;
 
-    const uint8_t P2P_MINIMUM_VERSION = 8;
+    const uint8_t P2P_MINIMUM_VERSION = 6;
 
     // This defines the minimum P2P version required for lite blocks propogation
     const uint8_t P2P_LITE_BLOCKS_PROPOGATION_VERSION = 4;
@@ -361,16 +337,16 @@ namespace CryptoNote
     const uint32_t DATABASE_DEFAULT_MAX_OPEN_FILES = 125; // 125 files
     const uint16_t DATABASE_DEFAULT_BACKGROUND_THREADS_COUNT = 4; // 4 DB threads
 
-    const char LATEST_VERSION_URL[] = "https://github.com/TRRXITTE/traaitt/releases";
+    const char LATEST_VERSION_URL[] = "http://latest.traaitt.com";
 
-    const std::string LICENSE_URL = "https://github.com/TRRXITTE/traaitt/blob/master/LICENSE";
+    const std::string LICENSE_URL = "https://traaitt.com/LICENSE";
 
     const static boost::uuids::uuid CRYPTONOTE_NETWORK = {
         {0xb3, 0x3c, 0x4a, 0x6c, 0xcf, 0x53, 0x57, 0x44, 0x65, 0xf9, 0x91, 0xa4, 0xb6, 0xc1, 0x43, 0xe9}};
 
     const char *const SEED_NODES[] = {
-      "34.94.53.44:44764", //USASEEDNODE
-      "34.89.3.246:44764", //EUROPESEEDNODE
-      "34.87.165.129:44764", //ASIASEEDNODE
+        "34.94.53.44:14475", //US WEST NETWORKNODE
+        "34.89.3.246:14475", //EUROPE WEST NETWORKNODE
+        "34.87.165.129:14475", //ASIA SOUTHEAST NETWORKNODE
     };
 } // namespace CryptoNote

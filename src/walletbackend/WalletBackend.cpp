@@ -1,5 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -713,7 +712,7 @@ Error WalletBackend::save() const
    blockchain synchronizer first (Call save()) */
 Error WalletBackend::unsafeSave() const
 {
-    return WalletBackend::saveWalletJSONToDisk(unsafeToJSON(), m_filename, m_password);
+    return WalletBackend::saveWalletJSONToDisk(toJSON(), m_filename, m_password);
 }
 
 /* Get the balance for one subwallet (error, unlocked, locked) */
@@ -749,153 +748,41 @@ uint64_t WalletBackend::getTotalUnlockedBalance() const
     return unlockedBalance;
 }
 
-bool WalletBackend::removePreparedTransaction(const Crypto::Hash &transactionHash)
-{
-    const bool removed = m_preparedTransactions.erase(transactionHash) == 1;
-
-    std::stringstream stream;
-
-    if (removed)
-    {
-        stream << "Removed prepared transaction " << transactionHash
-               << " as it is no longer valid or has just been sent.";
-    }
-    else
-    {
-        stream << "Could not remove prepared transaction: " << transactionHash
-               << " as it does not exist in the prepared transaction container.";
-    }
-
-    Logger::logger.log(
-        stream.str(),
-        Logger::INFO,
-        { Logger::TRANSACTIONS }
-    );
-
-    return removed;
-}
-
-std::tuple<Error, Crypto::Hash> WalletBackend::sendPreparedTransaction(
-    const Crypto::Hash transactionHash)
-{
-    std::scoped_lock lock(m_transactionMutex);
-
-    auto it = m_preparedTransactions.find(transactionHash);
-
-    if (it == m_preparedTransactions.end())
-    {
-        return {PREPARED_TRANSACTION_NOT_FOUND, Crypto::Hash()};
-    }
-
-    const auto preparedTransaction = it->second;
-
-    const auto [error, hash] = SendTransaction::sendPreparedTransaction(
-        preparedTransaction,
-        m_daemon,
-        m_subWallets
-    );
-
-    /* Remove the prepared transaction if we just sent it or it's no longer
-     * valid */
-    if (error == PREPARED_TRANSACTION_EXPIRED || !error)
-    {
-        removePreparedTransaction(preparedTransaction.transactionHash);
-    }
-
-    return {error, hash};
-}
-
 /* This is simply a wrapper for Transfer::sendTransactionBasic - we need to
    pass in the daemon and subwallets instance */
-std::tuple<Error, Crypto::Hash, WalletTypes::PreparedTransactionInfo> WalletBackend::sendTransactionBasic(
+std::tuple<Error, Crypto::Hash> WalletBackend::sendTransactionBasic(
     const std::string destination,
     const uint64_t amount,
-    const std::string paymentID,
-    const bool sendAll,
-    const bool sendTransaction)
+    const std::string paymentID)
 {
-    std::scoped_lock lock(m_transactionMutex);
-
-    const auto [error, hash, preparedTransaction] = SendTransaction::sendTransactionBasic(
-        destination,
-        amount,
-        paymentID,
-        m_daemon,
-        m_subWallets,
-        sendAll,
-        sendTransaction
-    );
-
-    if (!sendTransaction && !error)
-    {
-        m_preparedTransactions[hash] = preparedTransaction;
-    }
-
-    return {error, hash, preparedTransaction};
+    return SendTransaction::sendTransactionBasic(destination, amount, paymentID, m_daemon, m_subWallets);
 }
 
-std::tuple<Error, Crypto::Hash, WalletTypes::PreparedTransactionInfo> WalletBackend::sendTransactionAdvanced(
+std::tuple<Error, Crypto::Hash> WalletBackend::sendTransactionAdvanced(
     const std::vector<std::pair<std::string, uint64_t>> destinations,
     const uint64_t mixin,
-    const WalletTypes::FeeType fee,
+    const uint64_t fee,
     const std::string paymentID,
     const std::vector<std::string> subWalletsToTakeFrom,
     const std::string changeAddress,
-    const uint64_t unlockTime,
-    const std::vector<uint8_t> extraData,
-    const bool sendAll,
-    const bool sendTransaction)
+    const uint64_t unlockTime)
 {
-    std::scoped_lock lock(m_transactionMutex);
-
-    const auto [error, hash, preparedTransaction] = SendTransaction::sendTransactionAdvanced(
-        destinations,
-        mixin,
-        fee,
-        paymentID,
-        subWalletsToTakeFrom,
-        changeAddress,
-        m_daemon,
-        m_subWallets,
-        unlockTime,
-        extraData,
-        sendAll,
-        sendTransaction
-    );
-
-    if (!sendTransaction && !error)
-    {
-        m_preparedTransactions[hash] = preparedTransaction;
-    }
-
-    return {error, hash, preparedTransaction};
+    return SendTransaction::sendTransactionAdvanced(
+        destinations, mixin, fee, paymentID, subWalletsToTakeFrom, changeAddress, m_daemon, m_subWallets, unlockTime);
 }
 
 std::tuple<Error, Crypto::Hash> WalletBackend::sendFusionTransactionBasic()
 {
-    std::scoped_lock lock(m_transactionMutex);
-
     return SendTransaction::sendFusionTransactionBasic(m_daemon, m_subWallets);
 }
 
 std::tuple<Error, Crypto::Hash> WalletBackend::sendFusionTransactionAdvanced(
     const uint64_t mixin,
     const std::vector<std::string> subWalletsToTakeFrom,
-    const std::string destination,
-    const std::vector<uint8_t> extraData,
-    const std::optional<uint64_t> optimizeTarget)
+    const std::string destination)
 {
-    std::scoped_lock lock(m_transactionMutex);
-
     return SendTransaction::sendFusionTransactionAdvanced(
-        mixin,
-        subWalletsToTakeFrom,
-        destination,
-        m_daemon,
-        m_subWallets,
-        extraData,
-        optimizeTarget
-    );
+        mixin, subWalletsToTakeFrom, destination, m_daemon, m_subWallets);
 }
 
 void WalletBackend::reset(uint64_t scanHeight, uint64_t timestamp)
@@ -925,7 +812,7 @@ void WalletBackend::reset(uint64_t scanHeight, uint64_t timestamp)
     });
 }
 
-std::tuple<Error, std::string, Crypto::SecretKey, uint64_t> WalletBackend::addSubWallet()
+std::tuple<Error, std::string, Crypto::SecretKey> WalletBackend::addSubWallet()
 {
     return m_syncRAIIWrapper->pauseSynchronizerToRunFunction([this]() {
         /* Add the sub wallet */
@@ -944,34 +831,6 @@ std::tuple<Error, std::string>
     return m_syncRAIIWrapper->pauseSynchronizerToRunFunction([&, this]() {
         /* Add the sub wallet */
         const auto [error, address] = m_subWallets->importSubWallet(privateSpendKey, scanHeight);
-
-        if (!error)
-        {
-            /* If we're not making a new wallet, check if we need to reset the scan
-               height of the wallet synchronizer, to pick up the new wallet data
-               from the requested height */
-            uint64_t currentHeight = m_walletSynchronizer->getCurrentScanHeight();
-
-            if (currentHeight >= scanHeight)
-            {
-                /* Empty the sync status and reset the start height */
-                m_walletSynchronizer->reset(scanHeight);
-
-                /* Reset transactions, inputs, etc */
-                m_subWallets->reset(scanHeight);
-            }
-        }
-
-        return std::make_tuple(error, address);
-    });
-}
-
-std::tuple<Error, std::string>
-    WalletBackend::importSubWallet(const uint64_t walletIndex, const uint64_t scanHeight)
-{
-    return m_syncRAIIWrapper->pauseSynchronizerToRunFunction([&, this]() {
-        /* Add the sub wallet */
-        const auto [error, address] = m_subWallets->importSubWallet(walletIndex, scanHeight);
 
         if (!error)
         {
@@ -1098,20 +957,20 @@ Error WalletBackend::changePassword(const std::string newPassword)
     return save();
 }
 
-std::tuple<Error, Crypto::PublicKey, Crypto::SecretKey, uint64_t> WalletBackend::getSpendKeys(const std::string &address) const
+std::tuple<Error, Crypto::PublicKey, Crypto::SecretKey> WalletBackend::getSpendKeys(const std::string &address) const
 {
     const bool allowIntegratedAddresses = false;
 
     if (Error error = validateAddresses({address}, allowIntegratedAddresses); error != SUCCESS)
     {
-        return {error, Crypto::PublicKey(), Crypto::SecretKey(), 0};
+        return {error, Crypto::PublicKey(), Crypto::SecretKey()};
     }
 
     const auto [publicSpendKey, publicViewKey] = Utilities::addressToKeys(address);
 
-    const auto [success, privateSpendKey, walletIndex] = m_subWallets->getPrivateSpendKey(publicSpendKey);
+    const auto [success, privateSpendKey] = m_subWallets->getPrivateSpendKey(publicSpendKey);
 
-    return {success, publicSpendKey, privateSpendKey, walletIndex};
+    return {success, publicSpendKey, privateSpendKey};
 }
 
 Crypto::SecretKey WalletBackend::getPrivateViewKey() const
@@ -1140,7 +999,7 @@ std::tuple<Error, std::string> WalletBackend::getMnemonicSeedForAddress(const st
     }
 
     const auto privateViewKey = getPrivateViewKey();
-    const auto [error, publicSpendKey, privateSpendKey, walletIndex] = getSpendKeys(address);
+    const auto [error, publicSpendKey, privateSpendKey] = getSpendKeys(address);
 
     if (error)
     {
@@ -1263,11 +1122,6 @@ std::vector<std::tuple<std::string, uint64_t, uint64_t>> WalletBackend::getBalan
 }
 
 std::string WalletBackend::toJSON() const
-{
-    return m_syncRAIIWrapper->pauseSynchronizerToRunFunction([this]() { return unsafeToJSON(); });
-}
-
-std::string WalletBackend::unsafeToJSON() const
 {
     StringBuffer sb;
     Writer<StringBuffer> writer(sb);

@@ -1,5 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -40,13 +39,10 @@ class SubWallets
     /////////////////////////////
 
     /* Adds a sub wallet with a random spend key */
-    std::tuple<Error, std::string, Crypto::SecretKey, uint64_t> addSubWallet();
+    std::tuple<Error, std::string, Crypto::SecretKey> addSubWallet();
 
     /* Imports a sub wallet with the given private spend key */
     std::tuple<Error, std::string> importSubWallet(const Crypto::SecretKey privateSpendKey, const uint64_t scanHeight);
-
-    /* Imports a sub wallet with the given wallet counter */
-    std::tuple<Error, std::string> importSubWallet(const uint64_t walletIndex, const uint64_t scanHeight);
 
     /* Imports a sub view only wallet with the given public spend key */
     std::tuple<Error, std::string>
@@ -73,23 +69,18 @@ class SubWallets
     /* Generates a key image using the public+private spend key of the
        subwallet. Will return an uninitialized keyimage if a view wallet
        (and must exist, but the WalletSynchronizer already checks this) */
-    std::tuple<Crypto::KeyImage, Crypto::SecretKey> getTxInputKeyImage(
+    Crypto::KeyImage getTxInputKeyImage(
         const Crypto::PublicKey publicSpendKey,
         const Crypto::KeyDerivation derivation,
         const size_t outputIndex) const;
 
     void storeTransactionInput(const Crypto::PublicKey publicSpendKey, const WalletTypes::TransactionInput input);
 
-    /* Determine if the input is in the spendable container and is unlocked
-     * at this height. */
-    bool haveSpendableInput(
-        const WalletTypes::TransactionInput& input,
-        const uint64_t height) const;
-
     /* Get key images + amounts for the specified transfer amount. We
        can either take from all subwallets, or from some subset
        (usually just one address, e.g. if we're running a web wallet) */
-    std::vector<WalletTypes::TxInputAndOwner> getSpendableTransactionInputs(
+    std::tuple<std::vector<WalletTypes::TxInputAndOwner>, uint64_t> getTransactionInputsForAmount(
+        const uint64_t amount,
         const bool takeFromAll,
         std::vector<Crypto::PublicKey> subWalletsToTakeFrom,
         const uint64_t height) const;
@@ -98,8 +89,7 @@ class SubWallets
         const bool takeFromAll,
         std::vector<Crypto::PublicKey> subWalletsToTakeFrom,
         const uint64_t mixin,
-        const uint64_t height,
-        const std::optional<uint64_t> optimizeTarget) const;
+        const uint64_t height) const;
 
     /* Get the owner of the key image, if any */
     std::tuple<bool, Crypto::PublicKey> getKeyImageOwner(const Crypto::KeyImage keyImage) const;
@@ -126,8 +116,8 @@ class SubWallets
 
     Crypto::SecretKey getPrivateViewKey() const;
 
-    /* Gets the private spend key and subwallet index for the given public spend, if it exists */
-    std::tuple<Error, Crypto::SecretKey, uint64_t> getPrivateSpendKey(const Crypto::PublicKey publicSpendKey) const;
+    /* Gets the private spend key for the given public spend, if it exists */
+    std::tuple<Error, Crypto::SecretKey> getPrivateSpendKey(const Crypto::PublicKey publicSpendKey) const;
 
     std::vector<Crypto::SecretKey> getPrivateSpendKeys() const;
 
@@ -196,9 +186,6 @@ class SubWallets
     //////////////////////////////
     /* Private member variables */
     //////////////////////////////
-
-    /* The current subwallet index counter */
-    uint64_t m_subWalletIndexCounter = 0;
 
     /* The subwallets, indexed by public spend key */
     std::unordered_map<Crypto::PublicKey, SubWallet> m_subWallets;

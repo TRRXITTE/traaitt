@@ -1,6 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -13,7 +12,6 @@
 #include <memory>
 #include <system/TcpConnection.h>
 #include <system/TcpStream.h>
-#include <version.h>
 
 namespace CryptoNote
 {
@@ -56,28 +54,14 @@ namespace CryptoNote
     };
 
     template<typename Request, typename Response>
-    void invokeJsonCommand(HttpClient &client, const std::string &url, const std::string &method, const Request &req, Response &res)
+    void invokeJsonCommand(HttpClient &client, const std::string &url, const Request &req, Response &res)
     {
         HttpRequest hreq;
         HttpResponse hres;
 
         hreq.addHeader("Content-Type", "application/json");
-
-        std::stringstream userAgent;
-
-        userAgent << "NodeRpcProxy/" << PROJECT_VERSION_LONG;
-
-        hreq.addHeader("User-Agent", userAgent.str());
-
         hreq.setUrl(url);
-
-        hreq.setMethod(method);
-
-        if (method == "POST")
-        {
-            hreq.setBody(storeToJson(req));
-        }
-
+        hreq.setBody(storeToJson(req));
         client.request(hreq, hres);
 
         if (hres.getStatus() != HttpResponse::STATUS_200)
@@ -96,12 +80,6 @@ namespace CryptoNote
     {
         HttpRequest hreq;
         HttpResponse hres;
-
-        std::stringstream userAgent;
-
-        userAgent << "NodeRpcProxy/" << PROJECT_VERSION_LONG;
-
-        hreq.addHeader("User-Agent", userAgent.str());
 
         hreq.setUrl(url);
         hreq.setBody(storeToBinaryKeyValue(req));

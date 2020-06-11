@@ -1,6 +1,5 @@
 // Portions Copyright (c) 2018-2019, The Catalyst Developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -82,7 +81,7 @@ void balance(const std::shared_ptr<WalletBackend> walletBackend)
 
     /* We can make a better approximation of the view wallet balance if we
        ignore fusion transactions.
-       See https://github.com/turtlecoin/turtlecoin/issues/531 */
+       See https://github.com/trrxitte/traaitt/issues/531 */
     if (walletBackend->isViewWallet())
     {
         unlockedBalance = 0;
@@ -620,12 +619,11 @@ void getTxPrivateKey(const std::shared_ptr<WalletBackend> walletBackend)
 void setLogLevel()
 {
     const std::vector<Command> logLevels = {
-        Command("Trace",    "Display extremely detailed logging output"),
-        Command("Debug",    "Display highly detailed logging output"),
-        Command("Info",     "Display detailed logging output"),
-        Command("Warning",  "Display only warning and error logging output"),
-        Command("Fatal",    "Display only error logging output"),
-        Command("Disabled", "Don't display any logging output"),
+        Command("Debug", "Display all logging messages"),
+        Command("Info", "Display informational logging messages"),
+        Command("Warning", "Display messages when something may be wrong"),
+        Command("Fatal", "Display messages when something fails"),
+        Command("Disabled", "Don't display any logging messages"),
     };
 
     printCommands(logLevels);

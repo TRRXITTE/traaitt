@@ -1,5 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -13,14 +12,12 @@ namespace Logger
 {
     enum LogLevel
     {
-        TRACE = 5,
         DEBUG = 4,
         INFO = 3,
         WARNING = 2,
         FATAL = 1,
         DISABLED = 0,
     };
-
     enum LogCategory
     {
         SYNC,
@@ -28,8 +25,6 @@ namespace Logger
         FILESYSTEM,
         SAVE,
         DAEMON,
-        DAEMON_RPC,
-        DATABASE,
     };
 
     std::string logLevelToString(const LogLevel level);

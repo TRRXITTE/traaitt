@@ -1,6 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -43,19 +42,9 @@ namespace CryptoNote
         return transactionPool->getTransaction(hash);
     }
 
-    const std::optional<CachedTransaction> TransactionPoolCleanWrapper::tryGetTransaction(const Crypto::Hash &hash) const
-    {
-        return transactionPool->tryGetTransaction(hash);
-    }
-
     bool TransactionPoolCleanWrapper::removeTransaction(const Crypto::Hash &hash)
     {
         return transactionPool->removeTransaction(hash);
-    }
-
-    size_t TransactionPoolCleanWrapper::getFusionTransactionCount() const
-    {
-        return transactionPool->getFusionTransactionCount();
     }
 
     size_t TransactionPoolCleanWrapper::getTransactionCount() const

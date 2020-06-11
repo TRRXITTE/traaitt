@@ -1,7 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -55,7 +54,7 @@ namespace CryptoNote
 
             for (const auto &rawBlock : rawBlocks)
             {
-                legacy.emplace_back(rawBlock.block, rawBlock.transactions);
+                legacy.emplace_back(RawBlockLegacy {rawBlock.block, rawBlock.transactions});
             }
 
             return legacy;
@@ -369,7 +368,7 @@ namespace CryptoNote
                     logLevel = Logging::DEBUGGING;
                 }
             }
-            logger(logLevel, Logging::BRIGHT_MAGENTA) << context << ss.str();
+            logger(logLevel, Logging::BRIGHT_GREEN) << context << ss.str();
 
             logger(Logging::DEBUGGING) << "Remote top block height: " << hshd.current_height << ", id: " << hshd.top_id;
             // let the socket to send response to handshake, but request callback, to let send request data after
@@ -681,7 +680,7 @@ namespace CryptoNote
             }
         }
 
-        logger(DEBUGGING, BRIGHT_MAGENTA) << "Local blockchain updated, new index = " << m_core.getTopBlockIndex();
+        logger(DEBUGGING, BRIGHT_GREEN) << "Local blockchain updated, new index = " << m_core.getTopBlockIndex();
         if (!m_stop && context.m_state == CryptoNoteConnectionContext::state_synchronizing)
         {
             request_missing_objects(context, true);
@@ -974,7 +973,7 @@ namespace CryptoNote
             requestMissingPoolTransactions(context);
 
             context.m_state = CryptoNoteConnectionContext::state_normal;
-            logger(Logging::INFO, Logging::BRIGHT_MAGENTA)
+            logger(Logging::INFO, Logging::BRIGHT_GREEN)
                 << context << "Successfully synchronized with the " << CryptoNote::CRYPTONOTE_NAME << " Network.";
             on_connection_synchronized();
         }
@@ -987,8 +986,7 @@ namespace CryptoNote
         if (m_synchronized.compare_exchange_strong(val_expected, true))
         {
             logger(Logging::INFO) << ENDL;
-            logger(INFO, BRIGHT_MAGENTA) << "===[ " + std::string(CryptoNote::CRYPTONOTE_NAME)
-                                                + " Tip! ]============================="
+            logger(INFO, BRIGHT_MAGENTA) << "===[ traaittnetwork Information! ]============================="
                                          << ENDL;
             logger(INFO, BRIGHT_RED) << " Always exit " + WalletConfig::daemonName + " and " + WalletConfig::walletName
                                        + " with the \"exit\" command to preserve your chain and wallet data."
@@ -1000,9 +998,9 @@ namespace CryptoNote
             logger(INFO, BRIGHT_CYAN) << " If you need more assistance, you can contact us for support at "
                                        + WalletConfig::contactLink
                                 << ENDL;
-            logger(INFO, BRIGHT_MAGENTA) << "===================================================" << ENDL << ENDL;
+            logger(INFO, BRIGHT_MAGENTA) << "===============================================================" << ENDL << ENDL;
 
-            logger(INFO, BRIGHT_MAGENTA) << asciiArt << ENDL;
+            logger(INFO, BRIGHT_GREEN) << asciiArt << ENDL;
 
             m_observerManager.notify(&ICryptoNoteProtocolObserver::blockchainSynchronized, m_core.getTopBlockIndex());
         }
@@ -1256,40 +1254,13 @@ namespace CryptoNote
             if (peerHeight > m_blockchainHeight)
             {
                 m_blockchainHeight = peerHeight;
-                logger(Logging::INFO, Logging::BRIGHT_MAGENTA) << "current height added: " << peerHeight;
-            }
-        }
-
-                {
-            std::lock_guard<std::mutex> lock(m_blockchainHeightMutex);
-            if (peerHeight > m_blockchainHeight)
-            {
-                m_blockchainHeight = peerHeight;
-                logger(Logging::INFO, Logging::BRIGHT_YELLOW) << "current height added: " << peerHeight;
-            }
-        }
-
-                {
-            std::lock_guard<std::mutex> lock(m_blockchainHeightMutex);
-            if (peerHeight > m_blockchainHeight)
-            {
-                m_blockchainHeight = peerHeight;
-                logger(Logging::INFO, Logging::BRIGHT_CYAN) << "current height added: " << peerHeight;
-            }
-        }
-
-                {
-            std::lock_guard<std::mutex> lock(m_blockchainHeightMutex);
-            if (peerHeight > m_blockchainHeight)
-            {
-                m_blockchainHeight = peerHeight;
-                logger(Logging::INFO, Logging::BRIGHT_RED) << "current height added: " << peerHeight;
+                logger(Logging::INFO, Logging::BRIGHT_GREEN) << "current height added: " << peerHeight;
             }
         }
 
         if (updated)
         {
-            logger(TRACE) << "traaittnetwork height updated: " << m_observedHeight;
+            logger(TRACE) << "network height updated: " << m_observedHeight;
             m_observerManager.notify(&ICryptoNoteProtocolObserver::lastKnownBlockHeightUpdated, m_observedHeight);
         }
     }

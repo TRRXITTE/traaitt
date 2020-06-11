@@ -1,6 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -19,7 +18,7 @@
 #include <serialization/BinaryOutputStreamSerializer.h>
 #include <serialization/CryptoNoteSerialization.h>
 #include <vector>
-#include <ZedwalletTypes.h>
+#include <zedwallet/Types.h>
 
 namespace Common
 {

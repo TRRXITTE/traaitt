@@ -1,6 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -10,7 +9,7 @@
 #include "common/StdOutputStream.h"
 #include "serialization/BinaryInputStreamSerializer.h"
 #include "serialization/BinaryOutputStreamSerializer.h"
-#include "logger/Logger.h"
+
 #include <cstddef>
 #include <cstdint>
 #include <fstream>
@@ -235,7 +234,7 @@ template<class T> SwappedVector<T>::~SwappedVector()
 template<class T>
 bool SwappedVector<T>::open(const std::string &itemFileName, const std::string &indexFileName, size_t poolSize)
 {
-	if (poolSize == 0)
+    if (poolSize == 0)
     {
         return false;
     }
@@ -257,27 +256,15 @@ bool SwappedVector<T>::open(const std::string &itemFileName, const std::string &
         {
             uint32_t itemSize;
             m_indexesFile.read(reinterpret_cast<char *>(&itemSize), sizeof itemSize);
-
             if (!m_indexesFile)
             {
-				if (!m_indexesFile.eof()) { //fail it only if the other IO occured
-					return false;
-				}
-				else {
-					Logger::logger.log("Blockchain indexes file appears to be corrupted. Attempting automatic recovery by rewinding to " + std::to_string(i),
-						Logger::WARNING, {Logger::FILESYSTEM,Logger::DATABASE});
-					m_indexesFile.clear(); //clear the error
-					m_indexesFile.seekp(0); //retain compability with C98
-					m_indexesFile.write(reinterpret_cast<char*>(&i), sizeof i); //update the count
-					m_indexesFile.flush(); //commit
-					break;
-				}
+                return false;
             }
 
             offsets.emplace_back(itemsFileSize);
             itemsFileSize += itemSize;
         }
-		
+
         m_offsets.swap(offsets);
         m_itemsFileSize = itemsFileSize;
     }

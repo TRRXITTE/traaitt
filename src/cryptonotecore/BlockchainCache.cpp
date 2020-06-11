@@ -1,7 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -239,6 +238,7 @@ namespace CryptoNote
         blockInfos.get<BlockIndexTag>().push_back(std::move(blockInfo));
 
         auto blockIndex = cachedBlock.getBlockIndex();
+        assert(blockIndex == blockInfos.size() + startIndex - 1);
 
         for (const auto &keyImage : validatorState.spentKeyImages)
         {
@@ -1290,7 +1290,7 @@ namespace CryptoNote
     uint32_t BlockchainCache::getTopBlockIndex() const
     {
         assert(!blockInfos.empty());
-        return startIndex + storage->getBlockCount() - 1;
+        return startIndex + static_cast<uint32_t>(blockInfos.size()) - 1;
     }
 
     const Crypto::Hash &BlockchainCache::getTopBlockHash() const

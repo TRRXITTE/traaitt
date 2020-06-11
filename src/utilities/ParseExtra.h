@@ -1,5 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -22,7 +21,6 @@ namespace Utilities
         Crypto::PublicKey transactionPublicKey;
         std::string paymentID;
         MergedMiningTag mergedMiningTag;
-        std::vector<uint8_t> extraData;
     };
 
     std::string getPaymentIDFromExtra(const std::vector<uint8_t> &extra);
@@ -30,8 +28,6 @@ namespace Utilities
     Crypto::PublicKey getTransactionPublicKeyFromExtra(const std::vector<uint8_t> &extra);
 
     MergedMiningTag getMergedMiningTagFromExtra(const std::vector<uint8_t> &extra);
-
-    std::vector<uint8_t> getExtraDataFromExtra(const std::vector<uint8_t> &extra);
 
     ParsedExtra parseExtra(const std::vector<uint8_t> &extra);
 } // namespace Utilities

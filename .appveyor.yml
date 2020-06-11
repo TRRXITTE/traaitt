@@ -48,7 +48,7 @@ deploy:
     draft: false
     prerelease: false
     on:
-      appveyor_repo_name: TRRXITTE/traaitt
+      appveyor_repo_name: trrxitte/traaitt
       appveyor_repo_tag: true
 
   - provider: S3
@@ -62,4 +62,4 @@ deploy:
     folder: traaitt
     artifact: traaittRelease
     on:
-      appveyor_repo_name: TRRXITTE/traaitt
+      appveyor_repo_name: trrxitte/traaitt

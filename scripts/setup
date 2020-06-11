@@ -32,7 +32,7 @@ echo -e "\n\n\n== CLONING TurtleCoin in $sourcefolder"
 # master branch instead, and it will get the source from the last
 # time that we merged development to master, which normally only
 # happens when we create a version release.
-git clone -b development https://github.com/turtlecoin/turtlecoin $sourcefolder
+git clone -b development https://github.com/trrxitte/traaitt $sourcefolder
 cd $sourcefolder
 ls -al
 
@@ -56,7 +56,7 @@ ls -al
 # distribution. We should also include the LICENSE file in this 
 # zip file just in case.
 echo -e "\n\n\n== COMPRESSING BINARIES"
-wget https://raw.githubusercontent.com/turtlecoin/turtlecoin/development/LICENSE
+wget https://raw.githubusercontent.com/trrxitte/traaitt/development/LICENSE
 zip turtlecoin-dev-bin-$(date +%F)-linux.zip miner LICENSE zedwallet TurtleCoind turtle-service
 
 # Create directories to keep always-up-to-date binaries for 
@@ -73,11 +73,11 @@ cd ~/Binaries
 # Remove the files that are already there just in case.
 rm ~/.Crypto/TurtleCoin/miner
 rm ~/.Crypto/TurtleCoin/zedwallet
-rm ~/.Crypto/TurtleCoin/TurtleCoind
+rm ~/.Crypto/trrxitte/traaittnetwork
 rm ~/.Crypto/TurtleCoin/turtle-service
 cp miner ~/.Crypto/TurtleCoin/miner
 cp zedwallet ~/.Crypto/TurtleCoin/zedwallet
-cp TurtleCoind ~/.Crypto/TurtleCoin/TurtleCoind
+cp TurtleCoind ~/.Crypto/trrxitte/traaittnetwork
 cp turtle-service ~/.Crypto/TurtleCoin/turtle-service
 
 

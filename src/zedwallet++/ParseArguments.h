@@ -1,11 +1,8 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
 #pragma once
-
-#include <optional>
 
 #include <config/CryptoNoteConfig.h>
 #include <logger/Logger.h>
@@ -31,10 +28,7 @@ struct ZedConfig
     std::string walletPass;
 
     /* Controls what level of messages to log */
-    Logger::LogLevel logLevel = Logger::FATAL;
-
-    /* Optionally log to a file */
-    std::optional<std::string> loggingFilePath;
+    Logger::LogLevel logLevel = Logger::DISABLED;
 
     /* Use SSL with daemon */
     bool ssl = false;

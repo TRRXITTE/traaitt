@@ -1,5 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -17,13 +16,12 @@ Error validateFusionTransaction(
     const std::vector<std::string> subWalletsToTakeFrom,
     const std::string destinationAddress,
     const std::shared_ptr<SubWallets> subWallets,
-    const uint64_t currentHeight,
-    const std::optional<uint64_t> optimizeTarget);
+    const uint64_t currentHeight);
 
 Error validateTransaction(
     const std::vector<std::pair<std::string, uint64_t>> destinations,
     const uint64_t mixin,
-    const WalletTypes::FeeType fee,
+    const uint64_t fee,
     const std::string paymentID,
     const std::vector<std::string> subWalletsToTakeFrom,
     const std::string changeAddress,
@@ -46,7 +44,7 @@ Error validateMixin(const uint64_t mixin, const uint64_t height);
 
 Error validateAmount(
     const std::vector<std::pair<std::string, uint64_t>> destinations,
-    const WalletTypes::FeeType fee,
+    const uint64_t fee,
     const std::vector<std::string> subWalletsToTakeFrom,
     const std::shared_ptr<SubWallets> subWallets,
     const uint64_t currentHeight);
@@ -56,6 +54,3 @@ Error validateDestinations(const std::vector<std::pair<std::string, uint64_t>> d
 Error validateAddresses(std::vector<std::string> addresses, const bool integratedAddressesAllowed);
 
 Error validateOurAddresses(const std::vector<std::string> addresses, const std::shared_ptr<SubWallets> subWallets);
-
-Error validateOptimizeTarget(const std::optional<uint64_t> optimizeTarget);
-

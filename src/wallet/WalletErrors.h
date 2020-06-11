@@ -1,6 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -50,7 +49,6 @@ namespace CryptoNote
             MIXIN_ABOVE_THRESHOLD,
             CONFLICTING_PAYMENT_IDS,
             EXTRA_TOO_LARGE,
-            EXCESSIVE_OUTPUTS
         };
 
         // custom category:
@@ -139,8 +137,6 @@ namespace CryptoNote
                         return "Multiple conflicting payment ID's were specified via the use of integrated addresses";
                     case EXTRA_TOO_LARGE:
                         return "Transaction extra too large";
-                    case EXCESSIVE_OUTPUTS:
-                        return "Transaction has an excessive number of outputs for the input count";
                     default:
                         return "Unknown error";
                 }

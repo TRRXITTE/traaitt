@@ -1,7 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -230,8 +229,7 @@ namespace CryptoNote
         uint64_t alreadyGeneratedCoins,
         size_t currentBlockSize,
         uint64_t fee,
-        const Crypto::PublicKey &publicViewKey,
-        const Crypto::PublicKey &publicSpendKey,
+        const AccountPublicAddress &minerAddress,
         Transaction &tx,
         const BinaryArray &extraNonce /* = BinaryArray()*/,
         size_t maxOuts /* = 1*/) const
@@ -292,21 +290,21 @@ namespace CryptoNote
             Crypto::KeyDerivation derivation;
             Crypto::PublicKey outEphemeralPubKey;
 
-            bool r = Crypto::generate_key_derivation(publicViewKey, txkey.secretKey, derivation);
+            bool r = Crypto::generate_key_derivation(minerAddress.viewPublicKey, txkey.secretKey, derivation);
 
             if (!(r))
             {
                 logger(ERROR, BRIGHT_RED) << "while creating outs: failed to generate_key_derivation("
-                                          << publicViewKey << ", " << txkey.secretKey << ")";
+                                          << minerAddress.viewPublicKey << ", " << txkey.secretKey << ")";
                 return false;
             }
 
-            r = Crypto::derive_public_key(derivation, no, publicSpendKey, outEphemeralPubKey);
+            r = Crypto::derive_public_key(derivation, no, minerAddress.spendPublicKey, outEphemeralPubKey);
 
             if (!(r))
             {
                 logger(ERROR, BRIGHT_RED) << "while creating outs: failed to derive_public_key(" << derivation << ", "
-                                          << no << ", " << publicSpendKey << ")";
+                                          << no << ", " << minerAddress.spendPublicKey << ")";
                 return false;
             }
 
@@ -875,14 +873,8 @@ namespace CryptoNote
     Transaction CurrencyBuilder::generateGenesisTransaction()
     {
         CryptoNote::Transaction tx;
-
-        const auto publicViewKey = Constants::NULL_PUBLIC_KEY;
-        const auto publicSpendKey = Constants::NULL_PUBLIC_KEY;
-
-        m_currency.constructMinerTx(
-            1, 0, 0, 0, 0, 0, publicViewKey, publicSpendKey, tx
-        );
-
+        CryptoNote::AccountPublicAddress ac;
+        m_currency.constructMinerTx(1, 0, 0, 0, 0, 0, ac, tx); // zero fee in genesis
         return tx;
     }
 

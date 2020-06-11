@@ -1,5 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -24,10 +23,6 @@ namespace Logger
             case DISABLED:
             {
                 return "Disabled";
-            }
-            case TRACE:
-            {
-                return "Trace";
             }
             case DEBUG:
             {
@@ -54,14 +49,9 @@ namespace Logger
     {
         /* Convert to lower case */
         std::transform(level.begin(), level.end(), level.begin(), ::tolower);
-
         if (level == "disabled")
         {
             return DISABLED;
-        }
-        else if (level == "trace")
-        {
-            return TRACE;
         }
         else if (level == "debug")
         {
@@ -105,14 +95,6 @@ namespace Logger
             case DAEMON:
             {
                 return "Daemon";
-            }
-            case DAEMON_RPC:
-            {
-                return "Daemon RPC";
-            }
-            case DATABASE:
-            {
-                return "Database";
             }
         }
 
