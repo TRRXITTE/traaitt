@@ -1,5 +1,6 @@
 // Portions Copyright (c) 2018-2019 Galaxia Project Developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2020, The TurtleCoin Developers 
+// Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
