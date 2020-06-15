@@ -86,7 +86,7 @@ The binaries will be in the `src` folder when you are complete.
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./TurtleCoind --version`
+-   `./traaittnetwork --version`
 
 ##### CentOS with GCC
 
@@ -118,7 +118,7 @@ The binaries will be in the `src` folder when you are complete.
 See the ubuntu instructions for an example.
 
 -   `git clone -b master --single-branch https://github.com/TRRXITTE/traaitt`
--   `cd turtlecoin`
+-   `cd traaitt`
 -   `mkdir build`
 -   `cd build`
 -   `cmake ..`

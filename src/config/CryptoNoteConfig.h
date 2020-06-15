@@ -1,7 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers 
-// Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 //
 // Please see the included LICENSE file for more information.
 
@@ -94,11 +93,11 @@ namespace CryptoNote
         
         const uint64_t MAXIMUM_MIXIN_V1 = 100;
                
-        const uint64_t MINIMUM_MIXIN_V2 = 4;
+        const uint64_t MINIMUM_MIXIN_V2 = 7;
                 
         const uint64_t MAXIMUM_MIXIN_V2 = 7;
         
-        const uint64_t MINIMUM_MIXIN_V3 = 8;
+        const uint64_t MINIMUM_MIXIN_V3 = 17;
     
         const uint64_t MAXIMUM_MIXIN_V3 = 17;
 
@@ -109,7 +108,7 @@ namespace CryptoNote
 
         const uint32_t MIXIN_LIMITS_V3_HEIGHT = 84470000;
 
-        /* The mixin to use by default with zedwallet and turtle-service */
+        /* The mixin to use by default with zedwallet and xteservice */
         /* DEFAULT_MIXIN_V0 is the mixin used before MIXIN_LIMITS_V1_HEIGHT is started */
         const uint64_t DEFAULT_MIXIN_V0 = 3;
 
@@ -223,15 +222,7 @@ namespace CryptoNote
         static_assert(UPGRADE_VOTING_WINDOW > 1, "Bad UPGRADE_VOTING_WINDOW");
 
         /* Block heights we are going to have hard forks at */
-        const uint64_t FORK_HEIGHTS[] = {
-            1, // 1
-            1000000, // 2
-            2000000, // 3
-            3000000, // 4
-            4000000, // 5
-            5000000, // 6
-            6000000, // 7
-        };
+        const uint64_t FORK_HEIGHTS[] = {};
 
         /* MAKE SURE TO UPDATE THIS VALUE WITH EVERY MAJOR RELEASE BEFORE A FORK */
         const uint64_t SOFTWARE_SUPPORTED_FORK_INDEX = 1;

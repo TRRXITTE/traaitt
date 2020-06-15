@@ -32,7 +32,7 @@ echo -e "\n\n\n== CLONING TurtleCoin in $sourcefolder"
 # master branch instead, and it will get the source from the last
 # time that we merged development to master, which normally only
 # happens when we create a version release.
-git clone -b development https://github.com/TRRXITTE/traaitt $sourcefolder
+git clone -b development https://github.com/turtlecoin/turtlecoin $sourcefolder
 cd $sourcefolder
 ls -al
 
@@ -56,8 +56,8 @@ ls -al
 # distribution. We should also include the LICENSE file in this 
 # zip file just in case.
 echo -e "\n\n\n== COMPRESSING BINARIES"
-wget https://raw.githubusercontent.com/TRRXITTE/traaitt/development/LICENSE
-zip turtlecoin-dev-bin-$(date +%F)-linux.zip miner LICENSE zedwallet TurtleCoind turtle-service
+wget https://raw.githubusercontent.com/turtlecoin/turtlecoin/development/LICENSE
+zip turtlecoin-dev-bin-$(date +%F)-linux.zip miner LICENSE zedwallet TurtleCoind xteservice
 
 # Create directories to keep always-up-to-date binaries for 
 # TRTL Network files. Ideally, your bashrc has aliases to run
@@ -73,12 +73,12 @@ cd ~/Binaries
 # Remove the files that are already there just in case.
 rm ~/.Crypto/TurtleCoin/miner
 rm ~/.Crypto/TurtleCoin/zedwallet
-rm ~/.Crypto/TRRXITTE/traaittd
-rm ~/.Crypto/TurtleCoin/turtle-service
+rm ~/.Crypto/TurtleCoin/TurtleCoind
+rm ~/.Crypto/TurtleCoin/xteservice
 cp miner ~/.Crypto/TurtleCoin/miner
 cp zedwallet ~/.Crypto/TurtleCoin/zedwallet
-cp TurtleCoind ~/.Crypto/TRRXITTE/traaittd
-cp turtle-service ~/.Crypto/TurtleCoin/turtle-service
+cp TurtleCoind ~/.Crypto/TurtleCoin/TurtleCoind
+cp xteservice ~/.Crypto/TurtleCoin/xteservice
 
 
 

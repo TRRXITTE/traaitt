@@ -115,7 +115,7 @@ then
 fi
 
 # -- Config
-GITHUB_REPO="https://github.com/TRRXITTE/traaitt.git"
+GITHUB_REPO="https://github.com/turtlecoin/turtlecoin.git"
 CLONE_DIR="$BUILD_DIRECTORY/turtlecoin-buildall"
 TARGET_DIR="$BUILD_DIRECTORY/turtlecoin-releases"
 DYNAMIC_RELEASE="turtlecoin-${TAG_VERSION}-linux-CLI"

@@ -11,8 +11,8 @@ RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
 ADD https://github.com/just-containers/socklog-overlay/releases/download/v2.1.0-0/socklog-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/socklog-overlay-amd64.tar.gz -C /
 
-ARG TURTLECOIN_BRANCH=master
-ENV TURTLECOIN_BRANCH=${TURTLECOIN_BRANCH}
+ARG traaitt_BRANCH=master
+ENV traaitt_BRANCH=${traaitt_BRANCH}
 
 # install build dependencies
 # checkout the latest tag
@@ -25,19 +25,19 @@ RUN apt-get update && \
       g++-4.9 \
       git cmake \
       libboost1.58-all-dev && \
-    git clone https://github.com/trrxitte/traaitt.git /src/traaitt && \
+    git clone https://github.com/traaitt/traaitt.git /src/traaitt && \
     cd /src/traaitt && \
-    git checkout $TURTLECOIN_BRANCH && \
+    git checkout $traaitt_BRANCH && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
     make -j$(nproc) && \
     mkdir -p /usr/local/bin && \
-    cp src/TurtleCoind /usr/local/bin/TurtleCoind && \
+    cp src/traaittnetwork /usr/local/bin/traaittnetwork && \
     cp src/walletd /usr/local/bin/walletd && \
     cp src/zedwallet /usr/local/bin/zedwallet && \
     cp src/miner /usr/local/bin/miner && \
-    strip /usr/local/bin/TurtleCoind && \
+    strip /usr/local/bin/traaittnetwork && \
     strip /usr/local/bin/walletd && \
     strip /usr/local/bin/zedwallet && \
     strip /usr/local/bin/miner && \
@@ -65,7 +65,7 @@ RUN useradd -r -s /usr/sbin/nologin -m -d /var/lib/traaittnetwork traaittnetwork
     echo "fdmove -c 2 1" >> /etc/services.d/traaittnetwork/run && \
     echo "cd /var/lib/traaittnetwork" >> /etc/services.d/traaittnetwork/run && \
     echo "export HOME /var/lib/traaittnetwork" >> /etc/services.d/traaittnetwork/run && \
-    echo "s6-setuidgid traaittnetwork /usr/local/bin/TurtleCoind" >> /etc/services.d/traaittnetwork/run && \
+    echo "s6-setuidgid traaittnetwork /usr/local/bin/traaittnetwork" >> /etc/services.d/traaittnetwork/run && \
     chmod +x /etc/services.d/traaittnetwork/run && \
     chown nobody:nogroup /var/log/traaittnetwork && \
     echo "#!/usr/bin/execlineb" > /etc/services.d/traaittnetwork/log/run && \

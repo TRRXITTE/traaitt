@@ -1,5 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers 
-// Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
 
 #pragma once
 

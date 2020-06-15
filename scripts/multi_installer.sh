@@ -3,7 +3,7 @@
 # Turtlecoin Multi-installer
 # a one line clone-and-compile for turtlecoin:
 #
-#     ` $ curl -sL "https://raw.githubusercontent.com/TRRXITTE/traaitt/master/scripts/multi_installer.sh" | bash
+#     ` $ curl -sL "https://raw.githubusercontent.com/turtlecoin/turtlecoin/master/scripts/multi_installer.sh" | bash
 #
 # Supports Ubuntu 16.04 LTS, OSX 10.10+
 # Supports building project from current directory (automatic detection)
@@ -54,7 +54,7 @@ _set_wd() {
             esac
         fi
         mkdir turtlecoin
-        git clone -b master -q https://github.com/TRRXITTE/traaitt turtlecoin   >>build.log 2>&1 || _fail "Unable to clone git repository. Please see build.log for more information"
+        git clone -b master -q https://github.com/turtlecoin/turtlecoin turtlecoin   >>build.log 2>&1 || _fail "Unable to clone git repository. Please see build.log for more information"
         cd turtlecoin
     fi
 }
@@ -153,4 +153,4 @@ _set_wd
 _build_turtlecoin
 
 _note "Installation complete!"
-_note "Look in 'turtlecoin/build/src/' for the executible binaries. See 'https://github.com/TRRXITTE/traaitt' for more project support. Cowabunga!"
+_note "Look in 'turtlecoin/build/src/' for the executible binaries. See 'https://github.com/turtlecoin/turtlecoin' for more project support. Cowabunga!"
