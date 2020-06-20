@@ -224,7 +224,7 @@ namespace CryptoNote
 
                 if (m_blockchain.size() == m_votingCompleteHeight)
                 {
-                    logger(Logging::TRACE, Logging::YELLOW)
+                    logger(Logging::TRACE, Logging::BRIGHT_YELLOW)
                         << "###### UPGRADE after block index " << upgradeHeight() << " has been canceled!";
                     m_votingCompleteHeight = UNDEF_HEIGHT;
                 }

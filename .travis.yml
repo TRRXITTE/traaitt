@@ -117,7 +117,7 @@ script:
 before_deploy:
 - if [[ "${TRAVIS_TAG}" == "" ]]; then export TRAVIS_TAG=${TRAVIS_COMMIT} ; fi
 - cd src
-- TARGETS="traaittnetwork miner zedwallet xteservice zedwallet-beta cryptotest wallet-api wallet-upgrader"
+- TARGETS="TurtleCoind miner zedwallet turtle-service zedwallet-beta cryptotest wallet-api wallet-upgrader"
 - ${STRIP} ${TARGETS}
 - rm -rf traaitt-${TRAVIS_TAG}
 - mkdir traaitt-${TRAVIS_TAG}
@@ -137,7 +137,7 @@ deploy:
       - traaitt-${TRAVIS_TAG}-${LABEL}.tar.gz
     skip_cleanup: true
     on:
-      repo: traaitt/traaitt
+      repo: trrxitte/traaitt
       tags: true
       condition: "$_DEPLOYABLE = true"
 
@@ -153,5 +153,5 @@ deploy:
     upload-dir: traaitt
     local-dir: src/builds
     on:
-      repo: traaitt/traaitt
+      repo: trrxitte/traaitt
       all_branches: true

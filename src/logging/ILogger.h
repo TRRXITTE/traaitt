@@ -43,7 +43,7 @@ namespace Logging
 
     extern const std::string BRIGHT_RED;
 
-    extern const std::string YELLOW;
+    extern const std::string BRIGHT_YELLOW;
 
     extern const std::string BRIGHT_WHITE;
 

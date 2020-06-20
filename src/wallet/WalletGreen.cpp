@@ -563,7 +563,7 @@ namespace CryptoNote
 
                     if (!addedSpendKeys.empty())
                     {
-                        m_logger(WARNING, YELLOW)
+                        m_logger(WARNING, BRIGHT_YELLOW)
                             << "Found addresses not saved in container cache. Resynchronize container";
                         clearCaches(false, true);
                         subscribeWallets();
@@ -571,7 +571,7 @@ namespace CryptoNote
 
                     if (!deletedSpendKeys.empty())
                     {
-                        m_logger(WARNING, YELLOW)
+                        m_logger(WARNING, BRIGHT_YELLOW)
                             << "Found deleted addresses saved in container cache. Remove its transactions";
                         deleteOrphanTransactions(deletedSpendKeys);
                     }
@@ -3901,7 +3901,7 @@ namespace CryptoNote
         if (fusionInputs.size() < m_currency.fusionTxMinInputCount())
         {
             // nothing to optimize
-            m_logger(WARNING, YELLOW) << "Fusion transaction not created: nothing to optimize, threshold "
+            m_logger(WARNING, BRIGHT_YELLOW) << "Fusion transaction not created: nothing to optimize, threshold "
                                              << m_currency.formatAmount(threshold);
             return WALLET_INVALID_TRANSACTION_ID;
         }

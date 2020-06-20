@@ -729,7 +729,7 @@ namespace CryptoNote
 
         if (auxBlocksMerkleRoot != mmTag.merkleRoot)
         {
-            logger(ERROR, YELLOW) << "Aux block hash wasn't found in merkle tree";
+            logger(ERROR, BRIGHT_YELLOW) << "Aux block hash wasn't found in merkle tree";
             return false;
         }
 
