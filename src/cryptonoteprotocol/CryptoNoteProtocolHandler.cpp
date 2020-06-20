@@ -575,7 +575,7 @@ namespace CryptoNote
         m_core.getBlocks(arg.blocks, rawBlocks, rsp.missed_ids);
         if (!arg.txs.empty())
         {
-            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
+            logger(Logging::WARNING, Logging::YELLOW)
                 << context << "NOTIFY_RESPONSE_GET_OBJECTS: request.txs.empty() != true";
         }
 
@@ -991,7 +991,7 @@ namespace CryptoNote
             logger(INFO, BRIGHT_RED) << " Always exit " + WalletConfig::daemonName + " and " + WalletConfig::walletName
                                        + " with the \"exit\" command to preserve your chain and wallet data."
                                 << ENDL;
-            logger(INFO, BRIGHT_YELLOW) << " Use the \"help\" command to see a list of available commands." << ENDL;
+            logger(INFO, YELLOW) << " Use the \"help\" command to see a list of available commands." << ENDL;
             logger(INFO, BRIGHT_GREEN) << " Use the \"backup\" command in " + WalletConfig::walletName
                                        + " to display your keys/seed for restoring a corrupted wallet."
                                 << ENDL;
@@ -1077,7 +1077,7 @@ namespace CryptoNote
             bool ok = post_notify<NOTIFY_NEW_TRANSACTIONS>(*m_p2p, notification, context);
             if (!ok)
             {
-                logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
+                logger(Logging::WARNING, Logging::YELLOW)
                     << "Failed to post notification NOTIFY_NEW_TRANSACTIONS to " << context.m_connection_id;
             }
         }
@@ -1205,7 +1205,7 @@ namespace CryptoNote
         bool ok = post_notify<NOTIFY_REQUEST_TX_POOL>(*m_p2p, notification, context);
         if (!ok)
         {
-            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
+            logger(Logging::WARNING, Logging::YELLOW)
                 << "Failed to post notification NOTIFY_REQUEST_TX_POOL to " << context.m_connection_id;
         }
     }

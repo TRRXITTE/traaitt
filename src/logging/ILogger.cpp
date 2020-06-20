@@ -37,8 +37,8 @@ namespace Logging
     const std::string BRIGHT_RED = "\x1F"
                                    "BRIGHT_RED\x1F";
 
-    const std::string BRIGHT_YELLOW = "\x1F"
-                                      "BRIGHT_YELLOW\x1F";
+    const std::string YELLOW = "\x1F"
+                                      "YELLOW\x1F";
 
     const std::string BRIGHT_WHITE = "\x1F"
                                      "BRIGHT_WHITE\x1F";

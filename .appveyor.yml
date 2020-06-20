@@ -23,32 +23,32 @@ build_script:
   - md build
   - cd build
   - cmake -G "Visual Studio 16 2019" -A x64 .. -DARCH=default -DOPENSSL_ROOT_DIR=C:\OpenSSL-v111-Win64
-  - MSBuild traaitt.sln /p:CLToolExe=clcache.exe /p:CLToolPath=c:\Python37\Scripts\ /p:Configuration=Release /m
+  - MSBuild TurtleCoin.sln /p:CLToolExe=clcache.exe /p:CLToolPath=c:\Python37\Scripts\ /p:Configuration=Release /m
   - src\Release\cryptotest.exe
 
 after_build:
   - clcache -s
   - if not defined APPVEYOR_REPO_TAG_NAME (set APPVEYOR_REPO_TAG_NAME=%APPVEYOR_REPO_COMMIT%)
   - cd src\Release
-  - mkdir traaitt-%APPVEYOR_REPO_TAG_NAME%
-  - copy *.exe traaitt-%APPVEYOR_REPO_TAG_NAME%
-  - copy ..\..\..\LICENSE traaitt-%APPVEYOR_REPO_TAG_NAME%
-  - 7z a traaitt-%APPVEYOR_REPO_TAG_NAME%-windows.zip traaitt-%APPVEYOR_REPO_TAG_NAME%
-  - copy traaitt-%APPVEYOR_REPO_TAG_NAME%-windows.zip ..\..\..\
+  - mkdir turtlecoin-%APPVEYOR_REPO_TAG_NAME%
+  - copy *.exe turtlecoin-%APPVEYOR_REPO_TAG_NAME%
+  - copy ..\..\..\LICENSE turtlecoin-%APPVEYOR_REPO_TAG_NAME%
+  - 7z a turtlecoin-%APPVEYOR_REPO_TAG_NAME%-windows.zip turtlecoin-%APPVEYOR_REPO_TAG_NAME%
+  - copy turtlecoin-%APPVEYOR_REPO_TAG_NAME%-windows.zip ..\..\..\
 
 artifacts:
-  - path: traaitt-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
-    name: traaittRelease
+  - path: turtlecoin-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
+    name: TurtleCoinRelease
 
 deploy:
   - provider: GitHub
     auth_token:
       secure: KFrN1rc9FJN3BEoX99whHEuK5iPHHLmDcZ1Ac7tgT9oR6AxyjL0B+XMQu4wqo+fK
-    artifact: traaittRelease
+    artifact: TurtleCoinRelease
     draft: false
     prerelease: false
     on:
-      appveyor_repo_name: trrxitte/traaitt
+      appveyor_repo_name: turtlecoin/turtlecoin
       appveyor_repo_tag: true
 
   - provider: S3
@@ -56,10 +56,10 @@ deploy:
       secure: nVmSNpabdw1WcGdTTzxAEjza8j9icu89oyXbC8fZVuM=
     secret_access_key:
       secure: TpCxPp5npMRclcwHB3dhkd9ZsEgKstS6HOnQ1VR6YObEsaPyl5dr16ZdbsOgjykj
-    bucket: traaitt
+    bucket: turtlecoin
     region: us-east-2
     set_public: true
-    folder: traaitt
-    artifact: traaittRelease
+    folder: turtlecoin
+    artifact: TurtleCoinRelease
     on:
-      appveyor_repo_name: trrxitte/traaitt
+      appveyor_repo_name: turtlecoin/turtlecoin

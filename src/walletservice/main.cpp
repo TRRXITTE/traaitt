@@ -61,7 +61,7 @@ void __stdcall serviceHandler(DWORD fdwControl)
     if (fdwControl == SERVICE_CONTROL_STOP)
     {
         Logging::LoggerRef log(ppg->getLogger(), "serviceHandler");
-        log(Logging::INFO, Logging::BRIGHT_YELLOW) << "Stop signal caught";
+        log(Logging::INFO, Logging::YELLOW) << "Stop signal caught";
 
         SERVICE_STATUS serviceStatus {SERVICE_WIN32_OWN_PROCESS, SERVICE_STOP_PENDING, 0, NO_ERROR, 0, 0, 0};
         SetServiceStatus(serviceStatusHandle, &serviceStatus);
