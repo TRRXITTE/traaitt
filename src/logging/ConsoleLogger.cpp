@@ -33,7 +33,7 @@ namespace Logging
                                                                       {BRIGHT_BLUE, Color::BrightBlue},
                                                                       {BRIGHT_GREEN, Color::BrightGreen},
                                                                       {BRIGHT_RED, Color::BrightRed},
-                                                                      {BRIGHT_YELLOW, Color::BrightYellow},
+                                                                      {YELLOW, Color::BrightYellow},
                                                                       {BRIGHT_WHITE, Color::BrightWhite},
                                                                       {BRIGHT_CYAN, Color::BrightCyan},
                                                                       {BRIGHT_MAGENTA, Color::BrightMagenta},

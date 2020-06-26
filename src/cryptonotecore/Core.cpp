@@ -2499,7 +2499,7 @@ namespace CryptoNote
         {
             auto cutFrom = findCommonRoot(*mainChainStorage, *chainsLeaves[0]) + 1;
 
-            logger(Logging::INFO) << "DB has more blocks than blockchain storage, cutting from block index: "
+            logger(Logging::INFO, BRIGHT_RED) << "DB has more blocks than blockchain storage, cutting from block index: "
                                   << cutFrom;
             cutSegment(*chainsLeaves[0], cutFrom);
 

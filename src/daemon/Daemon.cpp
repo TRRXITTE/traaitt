@@ -238,7 +238,7 @@ int main(int argc, char *argv[])
 
         logger(INFO, BRIGHT_MAGENTA) << getProjectCLIHeader() << std::endl;
 
-        logger(INFO, BRIGHT_YELLOW) << "Program Working Directory: " << cwdPath;
+        logger(INFO, YELLOW) << "Program Working Directory: " << cwdPath;
 
         // create objects and link them
         CryptoNote::CurrencyBuilder currencyBuilder(logManager);
@@ -337,7 +337,7 @@ int main(int argc, char *argv[])
         }
 
         System::Dispatcher dispatcher;
-        logger(INFO, BRIGHT_YELLOW) << "Initializing core...";
+        logger(INFO, YELLOW) << "Initializing core...";
 
         std::unique_ptr<IMainChainStorage> tmainChainStorage = createSwappedMainChainStorage(config.dataDirectory, currency);
 
@@ -385,7 +385,7 @@ int main(int argc, char *argv[])
             dch.stop_handling();
         });
 
-        logger(INFO, BRIGHT_YELLOW) << "Starting P2P network loop...";
+        logger(INFO, YELLOW) << "Starting P2P network loop...";
         p2psrv.run();
         logger(INFO, BRIGHT_RED) << "p2p net loop stopped";
 

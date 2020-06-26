@@ -106,15 +106,15 @@ namespace
             }
             else if (result == 2)
             {
-                logger(INFO, BRIGHT_YELLOW) << "IGD was found but reported as not connected.";
+                logger(INFO, YELLOW) << "IGD was found but reported as not connected.";
             }
             else if (result == 3)
             {
-                logger(INFO, BRIGHT_YELLOW) << "UPnP device was found but not recognized as IGD.";
+                logger(INFO, YELLOW) << "UPnP device was found but not recognized as IGD.";
             }
             else
             {
-                logger(ERROR, BRIGHT_YELLOW) << "UPNP_GetValidIGD returned an unknown result code.";
+                logger(ERROR, YELLOW) << "UPNP_GetValidIGD returned an unknown result code.";
             }
 
             FreeUPNPUrls(&urls);
@@ -463,7 +463,7 @@ namespace CryptoNote
         }
         catch (const std::exception &e)
         {
-            logger(ERROR, BRIGHT_YELLOW) << "Failed to resolve host name '" << host << "': " << e.what();
+            logger(ERROR, YELLOW) << "Failed to resolve host name '" << host << "': " << e.what();
             return false;
         }
 
@@ -620,7 +620,7 @@ namespace CryptoNote
             m_payload_handler.stop();
         });
 
-        logger(INFO, BRIGHT_YELLOW)
+        logger(INFO, YELLOW)
             << "Stop signal sent, please only EXIT or CTRL+C one time to avoid stalling the shutdown process.";
         return true;
     }

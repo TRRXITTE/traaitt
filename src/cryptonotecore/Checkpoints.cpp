@@ -125,7 +125,7 @@ namespace CryptoNote
         }
         else
         {
-            logger(Logging::WARNING, BRIGHT_YELLOW) << "CHECKPOINT FAILED FOR HEIGHT " << index
+            logger(Logging::WARNING, YELLOW) << "CHECKPOINT FAILED FOR HEIGHT " << index
                                                     << ". EXPECTED HASH: " << it->second << ", FETCHED HASH: " << h;
             return false;
         }
