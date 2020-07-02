@@ -40,7 +40,7 @@ Everyone starts somewhere. If you're new or returning, you'll probably want to g
 Hello, and thank you for helping us! Our work makes use of many brilliant projects from other communities who contributed their code which helped us get to where we are now. To make sure we're always doing things the right way, we try to make sure we get the proper license header in every file we modify. By the terms of this project's license, any open source project may use our software, but the licenses may only be appended to, not altered. 
 
 ```
-// Copyright (c) 2020, TRRXITTE inc. development Team
+// Copyright (c) 2020, TRRXITTE inc.
 // Copyright (c) 2018-2020, TRTL TEAM
 // Copyright (c) 2014-2018, The Monero Project
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
