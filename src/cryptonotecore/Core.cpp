@@ -2499,7 +2499,7 @@ namespace CryptoNote
         {
             auto cutFrom = findCommonRoot(*mainChainStorage, *chainsLeaves[0]) + 1;
 
-            logger(Logging::INFO, BRIGHT_YELLOW) << "DB has more blocks than blockchain storage, cutting from block index: "
+            logger(Logging::INFO) << "DB has more blocks than blockchain storage, cutting from block index: "
                                   << cutFrom;
             cutSegment(*chainsLeaves[0], cutFrom);
 
@@ -2615,7 +2615,7 @@ namespace CryptoNote
             return;
         }
 
-        logger(Logging::INFO, BRIGHT_RED) << "Cutting root segment from index " << startIndex;
+        logger(Logging::INFO) << "Cutting root segment from index " << startIndex;
         auto childCache = segment.split(startIndex);
         segment.deleteChild(childCache.get());
     }
