@@ -26,16 +26,10 @@ We offer binary images of the latest releases here:
 ```
 https://github.com/TRRXITTE/traaitt/releases
 ```
-```
-https://github.com/TRRXITTE/traaittEnterpriseXTEdition/releases
-```
+
 
 # Graphical User Interface Wallet
 traaitt Cryptocurrency Wallet on Apple, Windows or Linux Machines.
-
-traaitt Enterprise XT Edition:
-
-You can always find the newest Release here: https://github.com/TRRXITTE/traaittEnterpriseXTEdition/releases
 
 
 # Command Line Interface Wallet
