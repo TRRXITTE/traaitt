@@ -4,28 +4,54 @@
 
 [![Discord](https://img.shields.io/discord/388915017187328002?label=traaittXTE%20Discord)](https://discord.gg/cXJBsJ6) [![GitHub All Releases](https://img.shields.io/github/downloads/TRRXITTE/traaitt/total?label=Downloads)](https://github.com/TRRXITTE/traaitt/releases) [![GitHub contributors](https://img.shields.io/github/contributors-anon/TRRXITTE/traaitt?label=Contributors)](https://github.com/TRRXITTE/traaitt/graphs/contributors) [![GitHub issues](https://img.shields.io/github/issues/TRRXITTE/traaitt?label=Issues)](https://github.com/TRRXITTE/traaitt/issues) ![GitHub stars](https://img.shields.io/github/stars/TRRXITTE/traaitt?label=Github%20Stars)
 <img src="https://github.com/traaitt/traaitt/blob/master/include/traaittxte.png">
-### Contributing to traaitt [XTE]
 
-We are a community of people across the world giving our time to make this software better. There are many ways you can help or join us:
+# traaitt [XTE]
 
--   If you'd like to report a bug, [fill out a bug report](https://github.com/TRRXITTE/traaitt/issues/new?template=bug_report.md)
--   If you'd like to submit code for a bug you fixed, [submit a pull-request](https://github.com/TRRXITTE/traaitt/compare)
--   If you're a tester submitting tests you've done on a Release Candidate, [click here](https://github.com/TRRXITTE/traaitt/issues/new?template=release-candidate.md)
--   If you're a beginner developer, and want a list of easy things you can accomplish to help, [click here for a list of TODOs](https://github.com/TRRXITTE/traaitt/labels/GOOD%20FIRST%20ISSUE)
--   **Everyone else just click the ★ star at the top of this repository 😊 It really helps us out!**
+Official Website:
+https://traaitt.com
 
-For anyone else wishing to help the community or who needs answers to questions not covered in this document, join us in our [Discord Chat](http://chat.turtlecoin.lol) here.
+Explorer:
+https://network.traaitt.com
 
-### traaitt [XTE] Build Branches
+Mining Pool:
+https://traaittsupply.com
 
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/TRRXITTE/traaitt/Build/master) **Master**
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/TRRXITTE/traaitt/Build/development) **Development**
+traaittnetwork cache API:
+https://cacheapi.traaitt.com
 
-### Installing traaitt [XTE]
 
-To use traaitt XTE, you'll need a way to connect to the network, and a wallet to hold your funds. This software includes those things for you, you can compile it yourself, or you can download the ones that we have compiled for you.
+# Installing
 
-**Click here to download: https://github.com/TRRXITTE/traaitt/releases**
+We offer binary images of the latest releases here: 
+```
+https://github.com/TRRXITTE/traaitt/releases
+```
+```
+https://github.com/TRRXITTE/traaittEnterpriseXTEdition/releases
+```
+
+# Graphical User Interface Wallet
+traaitt Cryptocurrency Wallet on Apple, Windows or Linux Machines.
+
+traaitt Enterprise XT Edition:
+
+You can always find the newest Release here: https://github.com/TRRXITTE/traaittEnterpriseXTEdition/releases
+
+
+# Command Line Interface Wallet
+How to properly use traaitt Cryptocurrency on Apple, Windows or Linux Machines.
+
+1st step: synchronize traaittnetwork
+```
+traaittnetwork is used to synchronize the compplete network and must be opened first.
+```
+2nd step: traaittPlatform Wallet
+```
+Open traaittwallet+ to Receive, Send or simply view your current balance.
+````
+```
+traaitt [XTE] addresses always start with XT.
+```
 
 ### Getting Started Fast
 
@@ -35,9 +61,6 @@ Everyone starts somewhere. If you're new or returning, you'll probably want to g
 -   **Learn things** - Syncing will take time, to help pass that time [learning how to use XTE](https://docs.traaitt.com/)
 -   **Backup your keys** - You can generate a wallet right inside the software, or use [this generator](https://traaitt.com/wallet/) that will make a [printable physical paper wallet](https://docs.traaitt.com/guides/wallets/making-a-wallet) to put in a safe place for later.
 
-### A note for contributing developers
-
-Hello, and thank you for helping us! Our work makes use of many brilliant projects from other communities who contributed their code which helped us get to where we are now. To make sure we're always doing things the right way, we try to make sure we get the proper license header in every file we modify. By the terms of this project's license, any open source project may use our software, but the licenses may only be appended to, not altered. 
 
 ```
 // Copyright (c) 2020, TRRXITTE inc.
