@@ -47,6 +47,6 @@ However, if you wish to create _portable_ binaries that can be shared between sy
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./traaittchain --version`
+-   `./traaittnetwork --version`
 
-[^ Return To Top](#compiling-traaitt-osx)
+[^ Return To Top](#compile-osx)

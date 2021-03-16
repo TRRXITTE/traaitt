@@ -53,7 +53,7 @@ However, if you wish to create _portable_ binaries that can be shared between sy
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./traaittchain --version`
+-   `./traaittnetwork --version`
 
 ##### Ubuntu with CLANG
 
@@ -110,7 +110,7 @@ _CentOS compile instructions provided by @brandonlehmann_
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./traaittchain --version`
+-   `./traaittnetwork --version`
 
 ##### Generic Linux
 
@@ -127,6 +127,6 @@ See the ubuntu instructions for an example.
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./traaittchain --version`
+-   `./traaittnetwork --version`
 
-[^ Return To Top](#compiling-traaitt-unix)
+[^ Return To Top](#compile-unix)

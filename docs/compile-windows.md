@@ -56,6 +56,6 @@ The binaries will be in the `src/Release` folder when you are complete.
 
 -   `cd src`
 -   `cd Release`
--   `traaittchain.exe --version`
+-   `traaittnetwork.exe --version`
 
-[^ Return To Top](#compiling-traaitt-windows)
+[^ Return To Top](#compile-windows)
