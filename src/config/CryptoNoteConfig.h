@@ -332,7 +332,7 @@ namespace CryptoNote
     const uint32_t DATABASE_DEFAULT_MAX_OPEN_FILES = 125; // 125 files
     const uint16_t DATABASE_DEFAULT_BACKGROUND_THREADS_COUNT = 4; // 4 DB threads
 
-    const char LATEST_VERSION_URL[] = "http://latest.traaitt.com";
+    const char LATEST_VERSION_URL[] = "http://github.com/TRRXITTE/traaitt/releases";
 
     const std::string LICENSE_URL = "https://traaitt.com/LICENSE";
 
@@ -344,6 +344,7 @@ namespace CryptoNote
       "34.87.165.129:14475", //
       "34.89.3.246:14475", //
       "35.241.111.255:14475", //XTE WORLDWIDE
+      "34.64.172.203:14475", //XTE WORLDWIDE
       "34.87.112.219:14475", //XTE WORLDWIDE
       "35.246.10.246:14475", //XTE WORLDWIDE
 	  "34.107.123.203:14475", //XTE WORLDWIDE
