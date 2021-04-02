@@ -340,8 +340,15 @@ namespace CryptoNote
         {0xb3, 0x3c, 0x4a, 0x6c, 0xcf, 0x53, 0x57, 0x44, 0x65, 0xf9, 0x91, 0xa4, 0xb6, 0xc1, 0x43, 0xe9}};
 
     const char *const SEED_NODES[] = {
-        "34.94.53.44:14475", //US WEST NETWORKNODE
-        "34.89.3.246:14475", //EUROPE WEST NETWORKNODE
-        "34.87.165.129:14475", //ASIA SOUTHEAST NETWORKNODE
+	  "34.94.53.44:14475", //PRIMARY SET
+      "34.87.165.129:14475", //
+      "34.89.3.246:14475", //
+      "35.241.111.255:14475", //XTE WORLDWIDE
+      "34.87.112.219:14475", //XTE WORLDWIDE
+      "35.246.10.246:14475", //XTE WORLDWIDE
+	  "34.107.123.203:14475", //XTE WORLDWIDE
+      "34.95.173.217:14475", //XTE WORLDWIDE
+      "34.86.103.64:14475", //XTE WORLDWIDE
+      "34.106.203.152:14475" //XTE WORLDWIDE
     };
 } // namespace CryptoNote
