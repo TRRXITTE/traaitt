@@ -18,7 +18,7 @@ namespace CryptoNote
 {
     namespace parameters
     {
-        const uint64_t DIFFICULTY_TARGET = 144; // seconds
+        const uint64_t DIFFICULTY_TARGET = 32; // seconds
 
         const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER = 500000000;
 
@@ -41,7 +41,7 @@ namespace CryptoNote
         const size_t BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V3 = 11;
 
         // MONEY_SUPPLY - total number coins to be generated
-        const uint64_t MONEY_SUPPLY = UINT64_C(144700000000000);
+        const uint64_t MONEY_SUPPLY = UINT64_C(800000000000000);
 
         const uint32_t ZAWY_DIFFICULTY_BLOCK_INDEX = 187000;
 
@@ -60,8 +60,7 @@ namespace CryptoNote
         static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
         const char GENESIS_COINBASE_TX_HEX[] =
-         "012801ff000180f0f8bfa2970a023bda4171b32ce63b1424ea2df9d13371668e723a8805540cc1c3446bf84e1ed62101018d16dedd4fb67a"
-         "99696e1535a50ca8420fa61143574f3e46ff41a3c3097bca";
+         "012801ff000180808d93f5d771025b8a2799e4c8410be6c2fa43a74926b06373c0d850e88f599cd34889c03262412101f076fddb90381137589ebbb53c289b52f7fea5fa99dcd75ae7aad37cb94ada22";
 
         static_assert(
             sizeof(GENESIS_COINBASE_TX_HEX) / sizeof(*GENESIS_COINBASE_TX_HEX) != 1,
@@ -93,24 +92,24 @@ namespace CryptoNote
         
         const uint64_t MAXIMUM_MIXIN_V1 = 100;
                
-        const uint64_t MINIMUM_MIXIN_V2 = 7;
+        const uint64_t MINIMUM_MIXIN_V2 = 0;
                 
-        const uint64_t MAXIMUM_MIXIN_V2 = 7;
+        const uint64_t MAXIMUM_MIXIN_V2 = 10;
         
-        const uint64_t MINIMUM_MIXIN_V3 = 17;
+        const uint64_t MINIMUM_MIXIN_V3 = 0;
     
-        const uint64_t MAXIMUM_MIXIN_V3 = 17;
+        const uint64_t MAXIMUM_MIXIN_V3 = 15;
 
         /* The heights to activate the mixin limits at */
-        const uint32_t MIXIN_LIMITS_V1_HEIGHT = 17000000;
+        const uint32_t MIXIN_LIMITS_V1_HEIGHT = 1000000;
 		
-        const uint32_t MIXIN_LIMITS_V2_HEIGHT = 42270000;
+        const uint32_t MIXIN_LIMITS_V2_HEIGHT = 5000000;
 
-        const uint32_t MIXIN_LIMITS_V3_HEIGHT = 84470000;
+        const uint32_t MIXIN_LIMITS_V3_HEIGHT = 8000000;
 
         /* The mixin to use by default with zedwallet and xteservice */
         /* DEFAULT_MIXIN_V0 is the mixin used before MIXIN_LIMITS_V1_HEIGHT is started */
-        const uint64_t DEFAULT_MIXIN_V0 = 3;
+        const uint64_t DEFAULT_MIXIN_V0 = 4;
 
         const uint64_t DEFAULT_MIXIN_V1 = MAXIMUM_MIXIN_V1;
 
@@ -223,8 +222,10 @@ namespace CryptoNote
 
         /* Block heights we are going to have hard forks at */
         const uint64_t FORK_HEIGHTS[] = {
-            1, //0
-            88447000, //1
+            1000, // 0
+            1000000, // 1
+            5000000, // 2
+            8000000, // 3
         };
 
         /* MAKE SURE TO UPDATE THIS VALUE WITH EVERY MAJOR RELEASE BEFORE A FORK */
