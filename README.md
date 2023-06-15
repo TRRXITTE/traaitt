@@ -11,10 +11,11 @@ Official Website:
 https://traaitt.com
 
 Explorer:
+https://interface.traaitt.com 
 https://network.traaitt.com
 
 Mining Pool:
-https://traaittsupply.com
+https://mine.traaitt.com
 
 traaittnetwork cache API:
 https://cacheapi.traaitt.com
