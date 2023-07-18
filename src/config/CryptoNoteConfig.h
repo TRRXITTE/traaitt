@@ -166,10 +166,10 @@ namespace CryptoNote
          * an invalid block. */
         const uint64_t MAX_OUTPUT_SIZE_NODE   = 250'000'000'000'00;
 
-        /* 100 billion atomic, or 1 billion TRTL */
+        /* 800000000000000 atomic */
         /* This is enforced on the client side. An output > 1 billion will not
          * be created in a transaction */
-        const uint64_t MAX_OUTPUT_SIZE_CLIENT = 1'447'000'000'00;
+        const uint64_t MAX_OUTPUT_SIZE_CLIENT = 8'000'000'000'000'00;
 
         const uint64_t MAX_OUTPUT_SIZE_HEIGHT = 2000000;
 
@@ -222,7 +222,7 @@ namespace CryptoNote
 
         /* Block heights we are going to have hard forks at */
         const uint64_t FORK_HEIGHTS[] = {
-            1000, // 0
+            1, // 0
             1000000, // 1
             5000000, // 2
             8000000, // 3
@@ -294,7 +294,7 @@ namespace CryptoNote
 
     const int RPC_DEFAULT_PORT = 14478;
 
-    const int SERVICE_DEFAULT_PORT = 8447;
+    const int SERVICE_DEFAULT_PORT = 8440;
 
     const size_t P2P_LOCAL_WHITE_PEERLIST_LIMIT = 1000;
 
