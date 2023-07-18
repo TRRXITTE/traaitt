@@ -546,7 +546,7 @@ namespace CryptoNote
 
     bool NodeServer::run()
     {
-        logger(INFO, BRIGHT_GREEN) << "Starting traaittXTE network server";
+        logger(INFO, BRIGHT_GREEN) << "Starting XTEnetwork server";
 
         m_workingContextGroup.spawn(std::bind(&NodeServer::acceptLoop, this));
         m_workingContextGroup.spawn(std::bind(&NodeServer::onIdle, this));
@@ -555,11 +555,11 @@ namespace CryptoNote
 
         m_stopEvent.wait();
 
-        logger(INFO, BRIGHT_RED) << "Stopping NodeServer and its " << m_connections.size() << " connections...";
+        logger(INFO, BRIGHT_RED) << "Stopping nodeserver and its " << m_connections.size() << " connections...";
         safeInterrupt(m_workingContextGroup);
         m_workingContextGroup.wait();
 
-        logger(INFO, BRIGHT_RED) << "NodeServer loop stopped";
+        logger(INFO, BRIGHT_RED) << "nodeserver loop stopped";
         return true;
     }
 
@@ -621,7 +621,7 @@ namespace CryptoNote
         });
 
         logger(INFO, YELLOW)
-            << "Stop signal sent, please only EXIT or CTRL+C one time to avoid stalling the shutdown process.";
+            << "Stop signal sent, please only EXIT or CTRL+C one time.";
         return true;
     }
 
