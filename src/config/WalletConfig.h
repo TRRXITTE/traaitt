@@ -24,7 +24,7 @@ namespace WalletConfig
     const std::string addressBookFilename = ".addressBook.json";
 
     /* The name of your deamon */
-    const std::string daemonName = "traaittnetwork";
+    const std::string daemonName = "XTEnetwork";
 
     /* The name to call this wallet */
     const std::string walletName = "traaittwallet++";

@@ -190,7 +190,7 @@ add_dependencies(WalletService version)
 add_dependencies(zedwallet version)
 
 # Finally build the binaries
-set_property(TARGET TurtleCoind PROPERTY OUTPUT_NAME "traaittnetwork")
+set_property(TARGET TurtleCoind PROPERTY OUTPUT_NAME "XTEnetwork")
 set_property(TARGET zedwallet PROPERTY OUTPUT_NAME "traaittwallet++")
 set_property(TARGET zedwallet++ PROPERTY OUTPUT_NAME "unusedwallet")
 set_property(TARGET WalletService PROPERTY OUTPUT_NAME "XTEservice")
