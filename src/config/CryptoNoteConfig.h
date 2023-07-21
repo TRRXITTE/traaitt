@@ -90,7 +90,7 @@ namespace CryptoNote
         /* This section defines our minimum and maximum mixin counts required for transactions */
         const uint64_t MINIMUM_MIXIN_V1 = 0;
         
-        const uint64_t MAXIMUM_MIXIN_V1 = 100;
+        const uint64_t MAXIMUM_MIXIN_V1 = 7;
                
         const uint64_t MINIMUM_MIXIN_V2 = 0;
                 
@@ -109,7 +109,7 @@ namespace CryptoNote
 
         /* The mixin to use by default with zedwallet and xteservice */
         /* DEFAULT_MIXIN_V0 is the mixin used before MIXIN_LIMITS_V1_HEIGHT is started */
-        const uint64_t DEFAULT_MIXIN_V0 = 4;
+        const uint64_t DEFAULT_MIXIN_V0 = 5;
 
         const uint64_t DEFAULT_MIXIN_V1 = MAXIMUM_MIXIN_V1;
 
