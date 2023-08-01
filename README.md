@@ -17,7 +17,7 @@ https://network.traaitt.com
 Mining Pool:
 https://mine.traaitt.com
 
-traaittnetwork cache API:
+XTEnetwork cache API:
 https://cacheapi.traaitt.com
 
 
@@ -36,13 +36,13 @@ traaitt Cryptocurrency Wallet on Apple, Windows or Linux Machines.
 # Command Line Interface Wallet
 How to properly use traaitt Cryptocurrency on Apple, Windows or Linux Machines.
 
-1st step: synchronize traaittnetwork
+1st step: synchronize XTEnetwork
 ```
 traaittnetwork is used to synchronize the compplete network and must be opened first.
 ```
-2nd step: traaittPlatform Wallet
+2nd step: traaittwallet++
 ```
-Open traaittwallet+ to Receive, Send or simply view your current balance.
+Open traaittwallet++ to Receive, Send or simply view your current balance.
 ````
 ```
 traaitt [XTE] addresses always start with XT.
@@ -58,7 +58,7 @@ Everyone starts somewhere. If you're new or returning, you'll probably want to g
 
 
 ```
-// Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2020, TRRXITTE Int., incorporate
 // Copyright (c) 2018-2020, TRTL TEAM
 // Copyright (c) 2014-2018, The Monero Project
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
