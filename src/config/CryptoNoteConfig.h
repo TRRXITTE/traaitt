@@ -74,7 +74,7 @@ namespace CryptoNote
         const size_t CRYPTONOTE_REWARD_BLOCKS_WINDOW = 100;
 
         const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE =
-            100000; // size of block (bytes) after which reward for block calculated using block size
+            10000000; // size of block (bytes) after which reward for block calculated using block size
         const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 = 20000;
 
         const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 = 10000;
@@ -85,7 +85,7 @@ namespace CryptoNote
 
         const size_t CRYPTONOTE_DISPLAY_DECIMAL_POINT = 2;
 
-        const uint64_t MINIMUM_FEE = UINT64_C(10);
+        const uint64_t MINIMUM_FEE = UINT64_C(100);
 
         /* This section defines our minimum and maximum mixin counts required for transactions */
         const uint64_t MINIMUM_MIXIN_V1 = 0;

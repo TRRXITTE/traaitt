@@ -1,0 +1,2 @@
+/usr/bin/ar qc libJsonRpcServer.a CMakeFiles/JsonRpcServer.dir/jsonrpcserver/JsonRpcServer.cpp.o
+/usr/local/opt/llvm@8/bin/llvm-ranlib libJsonRpcServer.a
