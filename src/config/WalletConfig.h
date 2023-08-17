@@ -1,5 +1,6 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers 
-// Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
+// Copyright (c) 2020, TRRXITTE Int., incorporate
+// Copyright (c) 2020, TRRXITTE Int., incorporate
 //
 // Please see the included LICENSE file for more information.
 
@@ -31,13 +32,13 @@ namespace WalletConfig
 
     /* The name of service/walletd, the programmatic rpc interface to a
        wallet */
-    const std::string walletdName = "XTEservice";
+    const std::string walletdName = "XTCASHservice";
 
     /* The full name of your crypto */
     const std::string coinName = std::string(CryptoNote::CRYPTONOTE_NAME);
 
-    /* Where can your users contact you for support? E.g. discord */
-    const std::string contactLink = "https://trrxitte.com";
+    /* Where can your users contact you for support? */
+    const std::string contactLink = "http://TRRXITTE.com";
 
     /* The number of decimals your coin has */
     const uint8_t numDecimalPlaces = CryptoNote::parameters::CRYPTONOTE_DISPLAY_DECIMAL_POINT;

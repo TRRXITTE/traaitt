@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -207,7 +207,7 @@ namespace PaymentService
         {
             if (!checkPaymentId(paymentId))
             {
-                logger(Logging::WARNING, Logging::YELLOW) << "Can't validate payment id: " << paymentId;
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Can't validate payment id: " << paymentId;
                 throw std::system_error(
                     make_error_code(CryptoNote::error::WalletServiceErrorCode::WRONG_PAYMENT_ID_FORMAT));
             }
@@ -219,7 +219,7 @@ namespace PaymentService
 
             if (!Common::podFromHex(hashString, hash))
             {
-                logger(Logging::WARNING, Logging::YELLOW) << "Can't parse hash string " << hashString;
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Can't parse hash string " << hashString;
                 throw std::system_error(make_error_code(CryptoNote::error::WalletServiceErrorCode::WRONG_HASH_FORMAT));
             }
 
@@ -340,7 +340,7 @@ namespace PaymentService
             {
                 if (!CryptoNote::validateAddress(address, currency))
                 {
-                    logger(Logging::WARNING, Logging::YELLOW) << "Can't validate address " << address;
+                    logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Can't validate address " << address;
                     throw std::system_error(make_error_code(CryptoNote::error::BAD_ADDRESS));
                 }
             }
@@ -642,7 +642,7 @@ namespace PaymentService
 
             if (!inited)
             {
-                logger(Logging::WARNING, Logging::YELLOW)
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                     << "Save impossible: Wallet Service is not initialized";
                 return make_error_code(CryptoNote::error::NOT_INITIALIZED);
             }
@@ -651,12 +651,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while saving wallet: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while saving wallet: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while saving wallet: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while saving wallet: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -671,7 +671,7 @@ namespace PaymentService
 
             if (!inited)
             {
-                logger(Logging::WARNING, Logging::YELLOW)
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                     << "Export impossible: Wallet Service is not initialized";
                 return make_error_code(CryptoNote::error::NOT_INITIALIZED);
             }
@@ -684,12 +684,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while exporting wallet: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while exporting wallet: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while exporting wallet: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while exporting wallet: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -706,7 +706,7 @@ namespace PaymentService
 
             if (!inited)
             {
-                logger(Logging::WARNING, Logging::YELLOW)
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                     << "Reset impossible: Wallet Service is not initialized";
                 return make_error_code(CryptoNote::error::NOT_INITIALIZED);
             }
@@ -716,12 +716,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while resetting wallet: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while resetting wallet: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while resetting wallet: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while resetting wallet: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -743,7 +743,7 @@ namespace PaymentService
             Crypto::SecretKey secretKey;
             if (!Common::podFromHex(spendSecretKeyText, secretKey))
             {
-                logger(Logging::WARNING, Logging::YELLOW) << "Wrong key format: " << spendSecretKeyText;
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Wrong key format: " << spendSecretKeyText;
                 return make_error_code(CryptoNote::error::WalletServiceErrorCode::WRONG_KEY_FORMAT);
             }
 
@@ -751,7 +751,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while creating address: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while creating address: " << x.what();
             return x.code();
         }
 
@@ -781,14 +781,14 @@ namespace PaymentService
                 auto insertResult = unique.insert(keyText);
                 if (!insertResult.second)
                 {
-                    logger(Logging::WARNING, Logging::YELLOW) << "Not unique key";
+                    logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Not unique key";
                     return make_error_code(CryptoNote::error::WalletServiceErrorCode::DUPLICATE_KEY);
                 }
 
                 Crypto::SecretKey key;
                 if (!Common::podFromHex(keyText, key))
                 {
-                    logger(Logging::WARNING, Logging::YELLOW) << "Wrong key format: " << keyText;
+                    logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Wrong key format: " << keyText;
                     return make_error_code(CryptoNote::error::WalletServiceErrorCode::WRONG_KEY_FORMAT);
                 }
 
@@ -799,7 +799,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while creating addresses: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while creating addresses: " << x.what();
             return x.code();
         }
 
@@ -820,7 +820,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while creating address: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while creating address: " << x.what();
             return x.code();
         }
 
@@ -844,7 +844,7 @@ namespace PaymentService
             Crypto::PublicKey publicKey;
             if (!Common::podFromHex(spendPublicKeyText, publicKey))
             {
-                logger(Logging::WARNING, Logging::YELLOW) << "Wrong key format: " << spendPublicKeyText;
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Wrong key format: " << spendPublicKeyText;
                 return make_error_code(CryptoNote::error::WalletServiceErrorCode::WRONG_KEY_FORMAT);
             }
 
@@ -852,7 +852,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while creating tracking address: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while creating tracking address: " << x.what();
             return x.code();
         }
 
@@ -871,7 +871,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while deleting address: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while deleting address: " << x.what();
             return x.code();
         }
 
@@ -895,7 +895,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting spend key: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting spend key: " << x.what();
             return x.code();
         }
 
@@ -915,7 +915,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting balance: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting balance: " << x.what();
             return x.code();
         }
 
@@ -936,7 +936,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting balance: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting balance: " << x.what();
             return x.code();
         }
 
@@ -962,7 +962,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting block hashes: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting block hashes: " << x.what();
             return x.code();
         }
 
@@ -979,7 +979,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting view key: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting view key: " << x.what();
             return x.code();
         }
 
@@ -1009,14 +1009,14 @@ namespace PaymentService
                 /* Have to be able to derive view key from spend key to create a mnemonic
                    seed, due to being able to generate multiple addresses we can't do
                    this in walletd as the default */
-                logger(Logging::WARNING, Logging::YELLOW)
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                     << "Your private keys are not deterministic and so a mnemonic seed cannot be generated!";
                 return make_error_code(CryptoNote::error::WalletServiceErrorCode::KEYS_NOT_DETERMINISTIC);
             }
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting mnemonic seed: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting mnemonic seed: " << x.what();
             return x.code();
         }
 
@@ -1047,12 +1047,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transactions: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transactions: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transactions: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transactions: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1081,12 +1081,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transactions: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transactions: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transactions: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transactions: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1118,12 +1118,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transactions: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transactions: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transactions: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transactions: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1153,12 +1153,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transactions: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transactions: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transactions: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transactions: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1176,7 +1176,7 @@ namespace PaymentService
 
             if (transactionWithTransfers.transaction.state == CryptoNote::WalletTransactionState::DELETED)
             {
-                logger(Logging::WARNING, Logging::YELLOW) << "Transaction " << transactionHash << " is deleted";
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Transaction " << transactionHash << " is deleted";
                 return make_error_code(CryptoNote::error::OBJECT_NOT_FOUND);
             }
 
@@ -1184,12 +1184,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transaction: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transaction: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting transaction: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting transaction: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1212,7 +1212,7 @@ namespace PaymentService
         }
         catch (std::exception &e)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Can't get addresses: " << e.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Can't get addresses: " << e.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1286,7 +1286,7 @@ namespace PaymentService
 
             if (!success)
             {
-                logger(Logging::WARNING, Logging::YELLOW) << error;
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << error;
                 throw std::system_error(error_code);
             }
 
@@ -1315,12 +1315,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while sending transaction: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while sending transaction: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while sending transaction: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while sending transaction: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1417,13 +1417,13 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while creating delayed transaction: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while creating delayed transaction: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
@@ -1447,13 +1447,13 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while getting delayed transaction hashes: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while getting delayed transaction hashes: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
@@ -1482,13 +1482,13 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while deleting delayed transaction hashes: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while deleting delayed transaction hashes: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
@@ -1517,13 +1517,13 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while sending delayed transaction hashes: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while sending delayed transaction hashes: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
@@ -1555,13 +1555,13 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while getting unconfirmed transaction hashes: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Error while getting unconfirmed transaction hashes: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
@@ -1597,12 +1597,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting status: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting status: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while getting status: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while getting status: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1634,12 +1634,12 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while sending fusion transaction: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while sending fusion transaction: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while sending fusion transaction: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while sending fusion transaction: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
 
@@ -1664,13 +1664,13 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Failed to estimate number of fusion outputs: " << x.what();
             return x.code();
         }
         catch (std::exception &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Failed to estimate number of fusion outputs: " << x.what();
             return make_error_code(CryptoNote::error::INTERNAL_WALLET_ERROR);
         }
@@ -1692,7 +1692,7 @@ namespace PaymentService
         }
         catch (std::system_error &x)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "Error while creating integrated address: " << x.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while creating integrated address: " << x.what();
             return x.code();
         }
 
@@ -1750,7 +1750,7 @@ namespace PaymentService
         }
         catch (std::exception &e)
         {
-            logger(Logging::WARNING, Logging::YELLOW) << "exception thrown in refresh(): " << e.what();
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "exception thrown in refresh(): " << e.what();
         }
     }
 

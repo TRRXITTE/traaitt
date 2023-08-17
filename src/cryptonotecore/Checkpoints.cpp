@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -125,7 +125,7 @@ namespace CryptoNote
         }
         else
         {
-            logger(Logging::WARNING, YELLOW) << "CHECKPOINT FAILED FOR HEIGHT " << index
+            logger(Logging::WARNING, BRIGHT_YELLOW) << "CHECKPOINT FAILED FOR HEIGHT " << index
                                                     << ". EXPECTED HASH: " << it->second << ", FETCHED HASH: " << h;
             return false;
         }

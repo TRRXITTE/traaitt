@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -29,7 +29,7 @@
 #include <unistd.h>
 #endif
 
-#define SERVICE_NAME "XTEService"
+#define SERVICE_NAME "Turtle-Service"
 
 PaymentGateService *ppg;
 
@@ -61,7 +61,7 @@ void __stdcall serviceHandler(DWORD fdwControl)
     if (fdwControl == SERVICE_CONTROL_STOP)
     {
         Logging::LoggerRef log(ppg->getLogger(), "serviceHandler");
-        log(Logging::INFO, Logging::YELLOW) << "Stop signal caught";
+        log(Logging::INFO, Logging::BRIGHT_YELLOW) << "Stop signal caught";
 
         SERVICE_STATUS serviceStatus {SERVICE_WIN32_OWN_PROCESS, SERVICE_STOP_PENDING, 0, NO_ERROR, 0, 0, 0};
         SetServiceStatus(serviceStatusHandle, &serviceStatus);

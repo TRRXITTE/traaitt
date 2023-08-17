@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -337,7 +337,7 @@ namespace CryptoNote
 
             std::stringstream ss;
 
-            ss << "Your " << CRYPTONOTE_NAME << " node is syncing with the network ";
+            ss << "Your " << CRYPTONOTE_NAME << " is syncing with the network ";
 
             /* We're behind the remote node */
             if (diff >= 0)
@@ -575,7 +575,7 @@ namespace CryptoNote
         m_core.getBlocks(arg.blocks, rawBlocks, rsp.missed_ids);
         if (!arg.txs.empty())
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << context << "NOTIFY_RESPONSE_GET_OBJECTS: request.txs.empty() != true";
         }
 
@@ -974,7 +974,7 @@ namespace CryptoNote
 
             context.m_state = CryptoNoteConnectionContext::state_normal;
             logger(Logging::INFO, Logging::BRIGHT_GREEN)
-                << context << "Successfully synchronized with the " << CryptoNote::CRYPTONOTE_NAME << " Network.";
+                << context << "Successfully synchronized with the " << CryptoNote::CRYPTONOTE_NAME << " network.";
             on_connection_synchronized();
         }
         return true;
@@ -986,10 +986,11 @@ namespace CryptoNote
         if (m_synchronized.compare_exchange_strong(val_expected, true))
         {
             logger(Logging::INFO) << ENDL;
-            logger(INFO, BRIGHT_MAGENTA) << "===[ traaittnetwork Information! ]============================="
+            logger(INFO, BRIGHT_MAGENTA) << "===[ " + std::string(CryptoNote::CRYPTONOTE_NAME)
+                                                + " Information! ]============================="
                                          << ENDL;
             logger(INFO, BRIGHT_RED) << " Always exit " + WalletConfig::daemonName + " and " + WalletConfig::walletName
-                                       + " with the \"exit\" command to preserve your chain and wallet data."
+                                       + " with the \"exit\" command to preserve your transaction and wallet data."
                                 << ENDL;
             logger(INFO, YELLOW) << " Use the \"help\" command to see a list of available commands." << ENDL;
             logger(INFO, BRIGHT_GREEN) << " Use the \"backup\" command in " + WalletConfig::walletName
@@ -1077,7 +1078,7 @@ namespace CryptoNote
             bool ok = post_notify<NOTIFY_NEW_TRANSACTIONS>(*m_p2p, notification, context);
             if (!ok)
             {
-                logger(Logging::WARNING, Logging::YELLOW)
+                logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                     << "Failed to post notification NOTIFY_NEW_TRANSACTIONS to " << context.m_connection_id;
             }
         }
@@ -1205,7 +1206,7 @@ namespace CryptoNote
         bool ok = post_notify<NOTIFY_REQUEST_TX_POOL>(*m_p2p, notification, context);
         if (!ok)
         {
-            logger(Logging::WARNING, Logging::YELLOW)
+            logger(Logging::WARNING, Logging::BRIGHT_YELLOW)
                 << "Failed to post notification NOTIFY_REQUEST_TX_POOL to " << context.m_connection_id;
         }
     }
@@ -1260,7 +1261,7 @@ namespace CryptoNote
 
         if (updated)
         {
-            logger(TRACE) << "network height updated: " << m_observedHeight;
+            logger(TRACE) << "Observed height updated: " << m_observedHeight;
             m_observerManager.notify(&ICryptoNoteProtocolObserver::lastKnownBlockHeightUpdated, m_observedHeight);
         }
     }

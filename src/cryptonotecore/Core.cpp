@@ -1,7 +1,7 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
 // Copyright (c) 2018-2019, The Galaxia Project Developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -1592,7 +1592,7 @@ namespace CryptoNote
         {
             logger(Logging::ERROR) << "Failed to get any matching outputs for amount " << amount << " ("
                                    << Utilities::formatAmount(amount) << "). Further explanation here: "
-                                   << "https://gist.github.com/zpalmtree/80b3e80463225bcfb8f8432043cb594c\n"
+                                   << "https://gist.github.com/traaittCASH/12bfad718bcb6c21c2e08cfd7869c9db\n"
                                    << "Note: If you are a public node operator, you can safely ignore this message. "
                                    << "It is only relevant to the user sending the transaction.";
             return false;
@@ -2492,14 +2492,14 @@ namespace CryptoNote
 
         if (storageBlocksCount > dbBlocksCount)
         {
-            logger(Logging::INFO) << "Importing blocks from blockchain storage";
+            logger(Logging::INFO, Logging::BRIGHT_GREEN) << "Importing blocks from blockchain storage";
             importBlocksFromStorage();
         }
         else if (storageBlocksCount < dbBlocksCount)
         {
             auto cutFrom = findCommonRoot(*mainChainStorage, *chainsLeaves[0]) + 1;
 
-            logger(Logging::INFO) << "DB has more blocks than blockchain storage, cutting from block index: "
+            logger(Logging::INFO, Logging::BRIGHT_RED) << "DB has more blocks than blockchain storage, cutting from block index: "
                                   << cutFrom;
             cutSegment(*chainsLeaves[0], cutFrom);
 

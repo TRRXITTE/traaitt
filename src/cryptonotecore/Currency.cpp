@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -729,7 +729,7 @@ namespace CryptoNote
 
         if (auxBlocksMerkleRoot != mmTag.merkleRoot)
         {
-            logger(ERROR, YELLOW) << "Aux block hash wasn't found in merkle tree";
+            logger(ERROR, BRIGHT_YELLOW) << "Aux block hash wasn't found in merkle tree";
             return false;
         }
 

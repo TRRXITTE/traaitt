@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
 // Copyright (c) 2014-2018, The Monero Project
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 // Copyright (c) 2019, The CyprusCoin Developers
 //
 // Please see the included LICENSE file for more information.
@@ -106,15 +106,15 @@ namespace
             }
             else if (result == 2)
             {
-                logger(INFO, YELLOW) << "IGD was found but reported as not connected.";
+                logger(INFO) << "IGD was found but reported as not connected.";
             }
             else if (result == 3)
             {
-                logger(INFO, YELLOW) << "UPnP device was found but not recognized as IGD.";
+                logger(INFO) << "UPnP device was found but not recognized as IGD.";
             }
             else
             {
-                logger(ERROR, YELLOW) << "UPNP_GetValidIGD returned an unknown result code.";
+                logger(ERROR) << "UPNP_GetValidIGD returned an unknown result code.";
             }
 
             FreeUPNPUrls(&urls);
@@ -463,7 +463,7 @@ namespace CryptoNote
         }
         catch (const std::exception &e)
         {
-            logger(ERROR, YELLOW) << "Failed to resolve host name '" << host << "': " << e.what();
+            logger(ERROR, BRIGHT_YELLOW) << "Failed to resolve host name '" << host << "': " << e.what();
             return false;
         }
 
@@ -525,11 +525,11 @@ namespace CryptoNote
         m_listener =
             System::TcpListener(m_dispatcher, System::Ipv4Address(m_bind_ip), static_cast<uint16_t>(m_listeningPort));
 
-        logger(INFO, BRIGHT_GREEN) << "Network service bound on " << m_bind_ip << ":" << m_listeningPort;
+        logger(INFO, BRIGHT_GREEN) << "Net service bound on " << m_bind_ip << ":" << m_listeningPort;
 
         if (m_external_port)
         {
-            logger(INFO) << "External port defined as " << m_external_port;
+            logger(INFO, BRIGHT_YELLOW) << "External port defined as " << m_external_port;
         }
 
         addPortMapping(logger, m_listeningPort);
@@ -546,7 +546,7 @@ namespace CryptoNote
 
     bool NodeServer::run()
     {
-        logger(INFO, BRIGHT_GREEN) << "Starting XTEnetwork server";
+        logger(INFO, BRIGHT_GREEN) << "Starting XTCASHnetwork server.";
 
         m_workingContextGroup.spawn(std::bind(&NodeServer::acceptLoop, this));
         m_workingContextGroup.spawn(std::bind(&NodeServer::onIdle, this));
@@ -555,11 +555,11 @@ namespace CryptoNote
 
         m_stopEvent.wait();
 
-        logger(INFO, BRIGHT_RED) << "Stopping nodeserver and its " << m_connections.size() << " connections...";
+        logger(INFO, BRIGHT_RED) << "Stopping NodeServer and its " << m_connections.size() << " connections...";
         safeInterrupt(m_workingContextGroup);
         m_workingContextGroup.wait();
 
-        logger(INFO, BRIGHT_RED) << "nodeserver loop stopped";
+        logger(INFO, BRIGHT_RED) << "NodeServer loop stopped";
         return true;
     }
 
@@ -620,8 +620,8 @@ namespace CryptoNote
             m_payload_handler.stop();
         });
 
-        logger(INFO, YELLOW)
-            << "Stop signal sent, please only EXIT or CTRL+C one time.";
+        logger(INFO, BRIGHT_YELLOW)
+            << "Stop signal sent, please only EXIT or CTRL+C one time to avoid stalling the shutdown process.";
         return true;
     }
 

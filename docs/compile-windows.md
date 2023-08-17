@@ -1,4 +1,5 @@
 ![image](https://github.com/TRRXITTE/traaitt/blob/master/docs/XTE.png)
+
 #### traaitt [XTE] is a fast, and easy way to send money to friends and businesses
 
 ### Compiling traaitt [XTE]
@@ -37,25 +38,25 @@ You can build for 32-bit or 64-bit Windows. **If you're not sure, pick 64-bit.**
 For 64-bit:
 
 -   From the start menu, open **x64 Native Tools Command Prompt for VS 2019**.
--   `cd <your_traaitt_directory>`
+-   `cd <your_traaittCASH_directory>`
 -   `mkdir build`
 -   `cd build`
 -   `cmake -G "Visual Studio 16 2019" -A x64 .. -DBOOST_ROOT=C:/local/boost_1_69_0`
--   `MSBuild traaitt.sln /p:Configuration=Release /m` or `MSBuild src\cli.vcxproj /p:Configuration=Release /m`
+-   `MSBuild traaittCASH.sln /p:Configuration=Release /p:PlatformToolset=v141 /m` or `MSBuild src\cli.vcxproj /p:Configuration=Release /p:PlatformToolset=v141 /m`
 
 For 32-bit:
 
 -   From the start menu, open **x86 Native Tools Command Prompt for VS 2019**.
--   `cd <your_traaitt_directory>`
+-   `cd <your_traaittCASH_directory>`
 -   `mkdir build`
 -   `cd build`
 -   `cmake -G "Visual Studio 16 2019" -A Win32 .. -DBOOST_ROOT=C:/local/boost_1_69_0`
--   `MSBuild traaitt.sln /p:Configuration=Release /p:Platform=Win32 /m`
+-   `MSBuild traaittCASH.sln /p:Configuration=Release /p:Platform=Win32 /p:PlatformToolset=v141 /m`
 
 The binaries will be in the `src/Release` folder when you are complete.
 
 -   `cd src`
 -   `cd Release`
--   `traaittnetwork.exe --version`
+-   `ETRXnetwork.exe --version`
 
 [^ Return To Top](#compile-windows)

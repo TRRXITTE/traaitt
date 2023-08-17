@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -224,7 +224,7 @@ namespace CryptoNote
 
                 if (m_blockchain.size() == m_votingCompleteHeight)
                 {
-                    logger(Logging::TRACE, Logging::YELLOW)
+                    logger(Logging::TRACE, Logging::BRIGHT_YELLOW)
                         << "###### UPGRADE after block index " << upgradeHeight() << " has been canceled!";
                     m_votingCompleteHeight = UNDEF_HEIGHT;
                 }

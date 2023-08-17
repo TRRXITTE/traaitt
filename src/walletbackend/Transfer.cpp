@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -545,7 +545,7 @@ namespace SendTransaction
 
                 error << "Failed to get any matching outputs for amount " << amount << " ("
                       << Utilities::formatAmount(amount) << "). Further explanation here: "
-                      << "https://gist.github.com/zpalmtree/80b3e80463225bcfb8f8432043cb594c";
+                      << "https://gist.github.com/traaittCASH/12bfad718bcb6c21c2e08cfd7869c9db";
 
                 return {Error(NOT_ENOUGH_FAKE_OUTPUTS, error.str()), fakeOuts};
             }
@@ -560,7 +560,7 @@ namespace SendTransaction
                 error << "Failed to get enough matching outputs for amount " << amount << " ("
                       << Utilities::formatAmount(amount) << "). Requested outputs: " << requestedOuts
                       << ", found outputs: " << it->outs.size() << ". Further explanation here: "
-                      << "https://gist.github.com/zpalmtree/80b3e80463225bcfb8f8432043cb594c";
+                      << "https://gist.github.com/traaittCASH/12bfad718bcb6c21c2e08cfd7869c9db";
 
                 return {Error(NOT_ENOUGH_FAKE_OUTPUTS, error.str()), fakeOuts};
             }
@@ -588,7 +588,7 @@ namespace SendTransaction
                 error << "Failed to get enough matching outputs for amount " << fakeOut.amount << " ("
                       << Utilities::formatAmount(fakeOut.amount) << "). Requested outputs: " << requestedOuts
                       << ", found outputs: " << fakeOut.outs.size() << ". Further explanation here: "
-                      << "https://gist.github.com/zpalmtree/80b3e80463225bcfb8f8432043cb594c";
+                      << "https://gist.github.com/traaittCASH/12bfad718bcb6c21c2e08cfd7869c9db";
 
                 return {Error(NOT_ENOUGH_FAKE_OUTPUTS, error.str()), fakeOuts};
             }
@@ -675,7 +675,7 @@ namespace SendTransaction
                 error << "Failed to get enough matching outputs for amount " << walletAmount.input.amount << " ("
                       << Utilities::formatAmount(walletAmount.input.amount) << "). Requested outputs: " << mixin
                       << ", found outputs: " << obscuredInput.outputs.size() << ". Further explanation here: "
-                      << "https://gist.github.com/zpalmtree/80b3e80463225bcfb8f8432043cb594c";
+                      << "https://gist.github.com/traaittCASH/12bfad718bcb6c21c2e08cfd7869c9db";
 
                 return {Error(NOT_ENOUGH_FAKE_OUTPUTS, error.str()), result};
             }

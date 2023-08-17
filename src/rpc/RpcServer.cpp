@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 // Copyright (c) 2018, The Karai Developers
 //
 // Please see the included LICENSE file for more information.
@@ -534,7 +534,7 @@ namespace CryptoNote
                     << "Failed to get enough matching outputs for amount " << amount << " ("
                     << Utilities::formatAmount(amount) << "). Requested outputs: " << req.outs_count
                     << ", found outputs: " << globalIndexes.size()
-                    << ". Further explanation here: https://gist.github.com/zpalmtree/80b3e80463225bcfb8f8432043cb594c"
+                    << ". Further explanation here: https://gist.github.com/traaittCASH/12bfad718bcb6c21c2e08cfd7869c9db"
                     << std::endl
                     << "Note: If you are a public node operator, you can safely ignore this message. "
                     << "It is only relevant to the user sending the transaction.";

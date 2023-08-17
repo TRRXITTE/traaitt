@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -33,7 +33,7 @@ namespace Logging
                                                                       {BRIGHT_BLUE, Color::BrightBlue},
                                                                       {BRIGHT_GREEN, Color::BrightGreen},
                                                                       {BRIGHT_RED, Color::BrightRed},
-                                                                      {YELLOW, Color::BrightYellow},
+                                                                      {BRIGHT_YELLOW, Color::BrightYellow},
                                                                       {BRIGHT_WHITE, Color::BrightWhite},
                                                                       {BRIGHT_CYAN, Color::BrightCyan},
                                                                       {BRIGHT_MAGENTA, Color::BrightMagenta},

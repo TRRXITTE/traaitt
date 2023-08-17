@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
 
         std::cout << "Want documentation on how to use the wallet-api?\n"
-                     "See https://turtlecoin.github.io/wallet-api-docs/\n\n";
+                     "See https://trrxitte.github.io/wallet-api-docs/\n\n";
 
         std::string address = "http://" + config.rpcBindIp + ":" + std::to_string(config.port);
 

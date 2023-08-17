@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
-// Copyright (c) 2018-2020, The TurtleCoin Developers // Copyright (c) 2020, TRRXITTE inc.
+// Copyright (c) 2018-2019, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
 
@@ -659,7 +659,7 @@ namespace CryptoNote
 
         if (checkIfShouldStop())
         { // Sic!
-            m_logger(WARNING, YELLOW) << "Block processing is interrupted";
+            m_logger(WARNING, BRIGHT_YELLOW) << "Block processing is interrupted";
             m_observerManager.notify(
                 &IBlockchainSynchronizerObserver::synchronizationCompleted,
                 std::make_error_code(std::errc::interrupted));
@@ -936,7 +936,7 @@ namespace CryptoNote
             {
                 if (checkIfShouldStop())
                 { // if stop, return immediately, without notification
-                    m_logger(WARNING, YELLOW) << "Pool transactions processing is interrupted";
+                    m_logger(WARNING, BRIGHT_YELLOW) << "Pool transactions processing is interrupted";
                     return std::make_error_code(std::errc::interrupted);
                 }
 

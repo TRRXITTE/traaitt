@@ -37,8 +37,8 @@ However, if you wish to create _portable_ binaries that can be shared between sy
 -   `ln -s /usr/local/opt/llvm@8 /usr/local/opt/llvm`
 -   `export CC=/usr/local/opt/llvm@8/bin/clang`
 -   `export CXX=/usr/local/opt/llvm@8/bin/clang++`
--   `git clone -b master --single-branch https://github.com/TRRXITTE/traaitt`
--   `cd traaitt`
+-   `git clone -b master --single-branch https://github.com/TRRXITTE/traaittCASH`
+-   `cd traaittCASH`
 -   `mkdir build`
 -   `cd build`
 -   `cmake ..`
@@ -47,6 +47,6 @@ However, if you wish to create _portable_ binaries that can be shared between sy
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./traaittnetwork --version`
+-   `./XTCASHnetwork --version`
 
 [^ Return To Top](#compile-osx)
