@@ -42,7 +42,7 @@ For 64-bit:
 -   `mkdir build`
 -   `cd build`
 -   `cmake -G "Visual Studio 16 2019" -A x64 .. -DBOOST_ROOT=C:/local/boost_1_69_0`
--   `MSBuild traaittCASH.sln /p:Configuration=Release /p:PlatformToolset=v141 /m` or `MSBuild src\cli.vcxproj /p:Configuration=Release /p:PlatformToolset=v141 /m`
+-   `MSBuild traaitt.sln /p:Configuration=Release /p:PlatformToolset=v141 /m` or `MSBuild src\cli.vcxproj /p:Configuration=Release /p:PlatformToolset=v141 /m`
 
 For 32-bit:
 
@@ -51,7 +51,7 @@ For 32-bit:
 -   `mkdir build`
 -   `cd build`
 -   `cmake -G "Visual Studio 16 2019" -A Win32 .. -DBOOST_ROOT=C:/local/boost_1_69_0`
--   `MSBuild traaittCASH.sln /p:Configuration=Release /p:Platform=Win32 /p:PlatformToolset=v141 /m`
+-   `MSBuild traaitt.sln /p:Configuration=Release /p:Platform=Win32 /p:PlatformToolset=v141 /m`
 
 The binaries will be in the `src/Release` folder when you are complete.
 

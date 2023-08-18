@@ -350,7 +350,7 @@ int main(int argc, char *argv[])
             std::move(tmainChainStorage));
 
         ccore.load();
-        logger(INFO, BRIGHT_MAGENTA) << "XTCASHnetwork core initialized";
+        logger(INFO, BRIGHT_MAGENTA) << "XTEnetwork core initialized";
 
         CryptoNote::CryptoNoteProtocolHandler cprotocol(currency, dispatcher, ccore, nullptr, logManager);
         CryptoNote::NodeServer p2psrv(dispatcher, cprotocol, logManager);

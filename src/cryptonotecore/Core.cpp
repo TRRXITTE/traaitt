@@ -1592,7 +1592,7 @@ namespace CryptoNote
         {
             logger(Logging::ERROR) << "Failed to get any matching outputs for amount " << amount << " ("
                                    << Utilities::formatAmount(amount) << "). Further explanation here: "
-                                   << "https://gist.github.com/traaittCASH/12bfad718bcb6c21c2e08cfd7869c9db\n"
+                                   << "https://gist.github.com/traaitt/12bfad718bcb6c21c2e08cfd7869c9db\n"
                                    << "Note: If you are a public node operator, you can safely ignore this message. "
                                    << "It is only relevant to the user sending the transaction.";
             return false;

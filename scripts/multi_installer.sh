@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # traaittcash Multi-installer
-# a one line clone-and-compile for traaittCASH:
+# a one line clone-and-compile for traaitt:
 #
 #     ` $ curl -sL "https://raw.githubusercontent.com/trrxitte/traaittcash/master/scripts/multi_installer.sh" | bash
 #
@@ -45,16 +45,16 @@ _set_wd() {
             read -r -p "${1:-traaittcash directory already exists. Overwrite? [y/N]} " response
             case "$response" in
                 [yY][eE][sS|[yY])
-                    _colorize red "Overwriting old traaittCASH directory" && echo
+                    _colorize red "Overwriting old traaitt directory" && echo
                     rm -rf "$PWD"/traaittcash
                     ;;
                 *)
-                    _fail "traaittCASH directory already exists. Aborting..."
+                    _fail "traaitt directory already exists. Aborting..."
                     ;;
             esac
         fi
-        git clone -b master --single-branch https://github.com/TRRXITTE/traaittCASH traaittCASH   >>build.log 2>&1 || _fail "Unable to clone git repository. Please see build.log for more information"
-        cd traaittCASH
+        git clone -b master --single-branch https://github.com/TRRXITTE/traaitt traaitt   >>build.log 2>&1 || _fail "Unable to clone git repository. Please see build.log for more information"
+        cd traaitt
     fi
 }
 
@@ -143,7 +143,7 @@ _configure_os() {
     _note "Operating system configuration completed. You're halfway there!"
 }
 
-_note "traaittCASH Multi_Installer v1.0 "
+_note "traaitt Multi_Installer v1.0 "
 _colorize green "TRRXITTE Int., incorporate" && echo
 
 _configure_os

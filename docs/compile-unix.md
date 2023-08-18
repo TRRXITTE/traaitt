@@ -43,8 +43,8 @@ However, if you wish to create _portable_ binaries that can be shared between sy
 -   `sudo pip install cmake`
 -   `export CC=gcc-8`
 -   `export CXX=g++-8`
--   `git clone -b master --single-branch https://github.com/TRRXITTE/traaittCASH`
--   `cd traaittCASH`
+-   `git clone -b master --single-branch https://github.com/TRRXITTE/traaitt`
+-   `cd traaitt`
 -   `mkdir build`
 -   `cd build`
 -   `cmake ..`
@@ -53,7 +53,7 @@ However, if you wish to create _portable_ binaries that can be shared between sy
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./XTCASHnetwork --version`
+-   `./XTEnetwork --version`
 
 ##### Ubuntu with CLANG
 
@@ -76,8 +76,8 @@ The binaries will be in the `src` folder when you are complete.
 *   `sudo pip install cmake`
 *   `export CC=clang-6.0`
 *   `export CXX=clang++-6.0`
-*   `git clone -b master --single-branch https://github.com/TRRXITTE/traaittCASH`
-*   `cd traaittCASH`
+*   `git clone -b master --single-branch https://github.com/TRRXITTE/traaitt`
+*   `cd traaitt`
 *   `mkdir build`
 *   `cd build`
 *   `cmake ..`
@@ -86,7 +86,7 @@ The binaries will be in the `src` folder when you are complete.
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./XTCASHnetwork --version`
+-   `./XTEnetwork --version`
 
 ##### CentOS with GCC
 
@@ -101,24 +101,24 @@ _CentOS compile instructions provided by @brandonlehmann_
 -   `./bootstrap.sh --prefix=/usr/local/`
 -   `./b2 -j$(nproc) -d0 install --with-system --with-filesystem --with-thread --with-date_time --with-chrono --with-regex --with-serialization --with-program_options`
 -   `cd ..`
--   `git clone https://github.com/TRRXITTE/traaittCASH`
--   `mkdir -p traaittCASH/build`
--   `cd traaittCASH/build`
+-   `git clone https://github.com/TRRXITTE/traaitt`
+-   `mkdir -p traaitt/build`
+-   `cd traaitt/build`
 -   `cmake3 ..`
 -   `make`
 
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./XTCASHnetwork --version`
+-   `./XTEnetwork --version`
 
 ##### Generic Linux
 
 **Note:** If you want to use clang, ensure you set the environment variables `CC` and `CXX`.
 See the ubuntu instructions for an example.
 
--   `git clone -b master --single-branch https://github.com/TRRXITTE/traaittCASH`
--   `cd traaittCASH`
+-   `git clone -b master --single-branch https://github.com/TRRXITTE/traaitt`
+-   `cd traaitt`
 -   `mkdir build`
 -   `cd build`
 -   `cmake ..`
@@ -127,6 +127,6 @@ See the ubuntu instructions for an example.
 The binaries will be in the `src` folder when you are complete.
 
 -   `cd src`
--   `./XTCASHnetwork --version`
+-   `./XTEnetwork --version`
 
 [^ Return To Top](#compile-unix)

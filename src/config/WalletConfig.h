@@ -32,7 +32,7 @@ namespace WalletConfig
 
     /* The name of service/walletd, the programmatic rpc interface to a
        wallet */
-    const std::string walletdName = "XTCASHservice";
+    const std::string walletdName = "XTEservice";
 
     /* The full name of your crypto */
     const std::string coinName = std::string(CryptoNote::CRYPTONOTE_NAME);
