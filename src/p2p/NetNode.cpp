@@ -546,7 +546,7 @@ namespace CryptoNote
 
     bool NodeServer::run()
     {
-        logger(INFO, BRIGHT_GREEN) << "Starting XTCASHnetwork server.";
+        logger(INFO, BRIGHT_GREEN) << "Starting XTEnetwork server.";
 
         m_workingContextGroup.spawn(std::bind(&NodeServer::acceptLoop, this));
         m_workingContextGroup.spawn(std::bind(&NodeServer::onIdle, this));
