@@ -1,0 +1,90 @@
+2023-Aug-23 21:44:58.859908 INFO    [daemon] 
+
+||====================================================================||
+||////////////////////////////////////////////////////////////////////||
+|| 100$ =================| FEDERAL RESERVE NOTE |=============== 100$ ||
+|||||                                                              |||||
+||<<|    TRRXITTE Int.                                             |>>||
+||>>|                          88888888888         T44737133B      |<<||
+||<<|                              888                             |>>||
+||>>|                              888                             |<<||
+||<<|      T44737133B              888             One Hundred     |>>||
+||>>|                                                              |<<||
+||<<|      Treasurer     ________________________     Secretary 17 |>>||
+|||||                   |UNITED STATES OF AMERICA|                 |||||
+|| 100$ ==================  ONE HUNDRED traaitt ================ 100$ ||
+||////////////////////////////////////////////////////////////////////||
+||====================================================================||
+
+ traaitt v0.10.44.00 ()
+ This software is distributed under the General Public License v3.0
+
+ Copyright 2020 - TODAY, TRRXITTE Int., incorporate
+
+ Additional Copyright(s) may apply, please see the included LICENSE file for more information.
+ If you did not receive a copy of the LICENSE, please visit:
+ https://traaitt.com/LICENSE
+
+
+2023-Aug-23 21:44:58.899918 INFO    [daemon] Program Working Directory: "C:\\Users\\TRRXITTE\\Documents\\GitHub\\traaitt\\build\\src\\Release"
+2023-Aug-23 21:44:58.904919 INFO    [daemon] Loading Checkpoints for faster initial sync...
+2023-Aug-23 21:44:58.907920 INFO    [daemon] Loaded 0 default checkpoints
+2023-Aug-23 21:44:58.910921 INFO    [RocksDBWrapper] Opening Database in C:\Users\TRRXITTE\AppData\Roaming/traaitt/DB
+2023-Aug-23 21:44:58.919922 INFO    [RocksDBWrapper] Database not found in C:\Users\TRRXITTE\AppData\Roaming/traaitt/DB. Creating new Database...
+2023-Aug-23 21:44:58.970934 INFO    [daemon] Initializing core...
+2023-Aug-23 21:44:58.975934 INFO    [daemon] XTEnetwork core initialized
+2023-Aug-23 21:44:58.978936 INFO    [daemon] Initializing p2p server...
+2023-Aug-23 21:44:58.980936 INFO    [node_server] Generated new peer ID: 10858792206558656053
+2023-Aug-23 21:44:58.983937 INFO    [node_server] Binding on 0.0.0.0:14451
+2023-Aug-23 21:44:58.986937 INFO    [node_server] Net service bound on 0.0.0.0:14451
+2023-Aug-23 21:44:58.988938 INFO    [node_server] Attempting to add IGD port mapping.
+2023-Aug-23 21:45:03.444565 INFO    [node_server] UPnP device was found but not recognized as IGD.
+2023-Aug-23 21:45:03.447566 INFO    [daemon] P2P server initialized.
+2023-Aug-23 21:45:03.451567 INFO    [daemon] Starting core rpc server on address 127.0.0.1:14485
+2023-Aug-23 21:45:03.454568 INFO    [daemon] Core RPC server started.
+2023-Aug-23 21:45:03.457567 INFO    [daemon] Starting P2P network loop...
+2023-Aug-23 21:45:03.461569 INFO    [node_server] Starting XTEnetwork server
+2023-Aug-23 21:45:44.587855 INFO    [protocol] 
+2023-Aug-23 21:45:44.589858 INFO    [protocol] ===[ traaitt Information! ]=============================
+2023-Aug-23 21:45:44.592858 INFO    [protocol]  Always exit XTEnetwork and traaittwallet++ with the "exit" command to preserve your transaction and wallet data.
+2023-Aug-23 21:45:44.597858 INFO    [protocol]  Use the "help" command to see a list of available commands.
+2023-Aug-23 21:45:44.600859 INFO    [protocol]  Use the "backup" command in traaittwallet++ to display your keys/seed for restoring a corrupted wallet.
+2023-Aug-23 21:45:44.604860 INFO    [protocol]  If you need more assistance, you can contact us for support at http://TRRXITTE.com
+2023-Aug-23 21:45:44.607860 INFO    [protocol] ===============================================================
+2023-Aug-23 21:45:44.607860 INFO    [protocol] 
+2023-Aug-23 21:45:44.612862 INFO    [protocol] 
+||====================================================================||
+||////////////////////////////////////////////////////////////////////||
+|| 100$ =================| FEDERAL RESERVE NOTE |=============== 100$ ||
+|||||                                                              |||||
+||<<|    TRRXITTE Int.                                             |>>||
+||>>|                          88888888888         T44737133B      |<<||
+||<<|                              888                             |>>||
+||>>|                              888                             |<<||
+||<<|      T44737133B              888             One Hundred     |>>||
+||>>|                                                              |<<||
+||<<|      Treasurer     ________________________     Secretary 17 |>>||
+|||||                   |UNITED STATES OF AMERICA|                 |||||
+|| 100$ ==================  ONE HUNDRED traaitt ================ 100$ ||
+||////////////////////////////////////////////////////////////////////||
+||====================================================================||
+
+2023-Aug-23 21:45:44.647870 INFO    [protocol] current height added: 1
+2023-Aug-23 21:45:55.163201 INFO    [protocol] current height added: 5
+2023-Aug-23 21:46:03.900168 INFO    [protocol] current height added: 8
+2023-Aug-23 21:46:04.188233 INFO    [protocol] current height added: 9
+2023-Aug-23 21:46:05.322489 INFO    [protocol] current height added: 12
+2023-Aug-23 21:46:07.391955 INFO    [protocol] current height added: 15
+2023-Aug-23 21:46:15.734048 INFO    [protocol] current height added: 22
+2023-Aug-23 21:46:20.329083 INFO    [protocol] current height added: 26
+2023-Aug-23 21:46:21.711395 INFO    [protocol] current height added: 28
+2023-Aug-23 21:46:24.803091 INFO    [protocol] current height added: 32
+2023-Aug-23 21:46:25.067150 INFO    [protocol] current height added: 33
+2023-Aug-23 21:46:25.820320 INFO    [protocol] current height added: 35
+2023-Aug-23 21:46:26.132390 INFO    [protocol] current height added: 36
+2023-Aug-23 21:46:31.055499 INFO    [protocol] current height added: 42
+2023-Aug-23 21:46:37.406929 INFO    [protocol] current height added: 50
+2023-Aug-23 21:46:44.888614 INFO    [protocol] current height added: 61
+2023-Aug-23 21:46:46.675016 INFO    [protocol] current height added: 63
+2023-Aug-23 21:47:03.730857 INFO    [protocol] current height added: 66
+2023-Aug-23 21:47:21.755916 INFO    [protocol] current height added: 67
