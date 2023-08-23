@@ -42,7 +42,7 @@ namespace CryptoNote
         const size_t BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V3 = 11;
 
         // MONEY_SUPPLY - total number coins to be generated
-        const uint64_t MONEY_SUPPLY = UINT64_C(800000000000000);
+        const uint64_t MONEY_SUPPLY = UINT64_C(80000000000000);
 
         const uint32_t ZAWY_DIFFICULTY_BLOCK_INDEX = 0;
 
@@ -61,7 +61,7 @@ namespace CryptoNote
         static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
         const char GENESIS_COINBASE_TX_HEX[] =
-            "012801ff00018080d0f29ce1480258b95eae2c838148a635dbec1ef531607eae0d453e9605b9bda00b26a3f37ad3210114ff63b27dec244fa3aa8629c564102e6062ba303be53fdeb23ecefe432d851c";
+            "012801ff0001808088a5a9a307020bd996ce5e84c0fe05c9a519d37d9ab27b5b81f621ab8067834dcd1e2142d75a210139c5127fafb1675ecb9104286186e7bee9015b2281401d25edcaa5f73c801242";
 
         static_assert(
             sizeof(GENESIS_COINBASE_TX_HEX) / sizeof(*GENESIS_COINBASE_TX_HEX) != 1,
@@ -91,15 +91,15 @@ namespace CryptoNote
         /* This section defines our minimum and maximum mixin counts required for transactions */
         const uint64_t MINIMUM_MIXIN_V1                              = 0;
 
-        const uint64_t MAXIMUM_MIXIN_V1                              = 5;
+        const uint64_t MAXIMUM_MIXIN_V1                              = 4;
 
         const uint64_t MINIMUM_MIXIN_V2                              = 0;
 
-        const uint64_t MAXIMUM_MIXIN_V2                              = 8;
+        const uint64_t MAXIMUM_MIXIN_V2                              = 5;
 
         const uint64_t MINIMUM_MIXIN_V3                              = 0;
 
-        const uint64_t MAXIMUM_MIXIN_V3                              = 10;
+        const uint64_t MAXIMUM_MIXIN_V3                              = 8;
 
         /* The heights to activate the mixin limits at */
         const uint32_t MIXIN_LIMITS_V1_HEIGHT = 440000;
@@ -165,12 +165,12 @@ namespace CryptoNote
 
         /* This is enforced on the daemon side. An output > 250 billion causes
          * an invalid block. */
-        const uint64_t MAX_OUTPUT_SIZE_NODE   = 8'000'000'000'000'00;
+        const uint64_t MAX_OUTPUT_SIZE_NODE   = 800'000'000'000'00;
 
 
         /* This is enforced on the client side. An output > 1 billion will not
          * be created in a transaction */
-        const uint64_t MAX_OUTPUT_SIZE_CLIENT = 8'000'000'000'000'00;
+        const uint64_t MAX_OUTPUT_SIZE_CLIENT = 800'000'000'000'00;
 
         const uint64_t MAX_OUTPUT_SIZE_HEIGHT = 1;
 
@@ -235,35 +235,13 @@ namespace CryptoNote
         /* Block heights we are going to have hard forks at */
                 const uint64_t FORK_HEIGHTS[] = {
                     1, // 1
-                    700000, // 2
-                    714000, // 3
-                    728000, // 4
-                    732000, // 5
-                    746000, // 6
-                    758000, // 7
-                    772000, // 8
-                    786000, // 9
-                    800000, // 10
-                    1000000, // 11
-                    1100000, // 12
-                    1200000, // 13
-                    1300000, // 14
-                    1400000, // 15
-                    1500000, // 16
-                    1600000, // 17
-                    1700000, // 18
-                    1800000, // 19
-                    1900000, // 20
-                    2000000, // 21
-                    2100000, // 22
-                    2200000, // 23
-                    2300000, // 24
-                    2400000, // 25
-                    4500000, // 26
+                    440000, // 2
+                    800000, // 3
+                    1000000, // 4
                 };
 
         /* MAKE SURE TO UPDATE THIS VALUE WITH EVERY MAJOR RELEASE BEFORE A FORK */
-        const uint64_t SOFTWARE_SUPPORTED_FORK_INDEX = 10;
+        const uint64_t SOFTWARE_SUPPORTED_FORK_INDEX = 4;
 
         const uint64_t FORK_HEIGHTS_SIZE = sizeof(FORK_HEIGHTS) / sizeof(*FORK_HEIGHTS);
 
