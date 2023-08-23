@@ -165,12 +165,12 @@ namespace CryptoNote
 
         /* This is enforced on the daemon side. An output > 250 billion causes
          * an invalid block. */
-        const uint64_t MAX_OUTPUT_SIZE_NODE   = 800'000'000'000'00;
+        const uint64_t MAX_OUTPUT_SIZE_NODE   = 8'000'000'000'000'00;
 
 
         /* This is enforced on the client side. An output > 1 billion will not
          * be created in a transaction */
-        const uint64_t MAX_OUTPUT_SIZE_CLIENT = 800'000'000'000'00;
+        const uint64_t MAX_OUTPUT_SIZE_CLIENT = 8'000'000'000'000'00;
 
         const uint64_t MAX_OUTPUT_SIZE_HEIGHT = 1;
 
