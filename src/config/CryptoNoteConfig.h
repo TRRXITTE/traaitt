@@ -70,7 +70,7 @@ namespace CryptoNote
         /* This is the unix timestamp of the first "mined" block (technically block 2, not the genesis block)
            You can get this value by doing "print_block 2" in XTEnetwork. It is used to know what timestamp
            to import from when the block height cannot be found in the node or the node is offline. */
-        const uint64_t GENESIS_BLOCK_TIMESTAMP = 1686748487;
+        const uint64_t GENESIS_BLOCK_TIMESTAMP = 1692788232;
 
         const size_t CRYPTONOTE_REWARD_BLOCKS_WINDOW = 100;
 
