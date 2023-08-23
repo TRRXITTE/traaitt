@@ -1,2 +1,0 @@
-/usr/bin/ar qc libNigel.a CMakeFiles/Nigel.dir/nigel/Nigel.cpp.o
-/usr/local/opt/llvm@8/bin/llvm-ranlib libNigel.a

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libBlockchainExplorer.a CMakeFiles/BlockchainExplorer.dir/blockchainexplorer/BlockchainExplorer.cpp.o CMakeFiles/BlockchainExplorer.dir/blockchainexplorer/BlockchainExplorerErrors.cpp.o
-/usr/local/opt/llvm@8/bin/llvm-ranlib libBlockchainExplorer.a

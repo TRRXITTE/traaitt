@@ -1,2 +1,0 @@
-/usr/bin/ar qc libMnemonics.a CMakeFiles/Mnemonics.dir/mnemonics/Mnemonics.cpp.o
-/usr/local/opt/llvm@8/bin/llvm-ranlib libMnemonics.a

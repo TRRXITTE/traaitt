@@ -1,2 +1,0 @@
-/usr/bin/ar qc libHttp.a CMakeFiles/Http.dir/http/HttpParser.cpp.o CMakeFiles/Http.dir/http/HttpParserErrorCodes.cpp.o CMakeFiles/Http.dir/http/HttpRequest.cpp.o CMakeFiles/Http.dir/http/HttpResponse.cpp.o
-/usr/local/opt/llvm@8/bin/llvm-ranlib libHttp.a
