@@ -75,10 +75,10 @@ namespace CryptoNote
         const size_t CRYPTONOTE_REWARD_BLOCKS_WINDOW = 100;
 
         const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE =
-            10000000; // size of block (bytes) after which reward for block calculated using block size
-        const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 = 100000000;
+            1000000; // size of block (bytes) after which reward for block calculated using block size
+        const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 = 20000;
 
-        const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 = 100000000;
+        const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 = 10000;
 
         const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT = CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE;
 
@@ -150,7 +150,7 @@ namespace CryptoNote
 
         static_assert(2 * DIFFICULTY_CUT <= DIFFICULTY_WINDOW - 2, "Bad DIFFICULTY_WINDOW or DIFFICULTY_CUT");
 
-        const size_t MAX_BLOCK_SIZE_INITIAL = 10000000;
+        const size_t MAX_BLOCK_SIZE_INITIAL = 1000000;
 
         const uint64_t MAX_BLOCK_SIZE_GROWTH_SPEED_NUMERATOR = 100 * 1024;
 
