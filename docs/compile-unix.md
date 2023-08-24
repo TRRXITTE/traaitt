@@ -92,7 +92,6 @@ The binaries will be in the `src` folder when you are complete.
 *   `sudo aptitude install -y build-essential libstdc++-7-dev git libboost-all-dev libssl-dev cmake`
 *   `sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-16 100`
 *   `sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-16 100`
-*   `sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-16 100`
 *   `git clone -b master --single-branch https://github.com/TRRXITTE/traaitt`
 *   `cd traaitt`
 *   `mkdir build`
