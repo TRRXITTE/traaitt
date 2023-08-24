@@ -61,7 +61,7 @@ namespace CryptoNote
         static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
         const char GENESIS_COINBASE_TX_HEX[] =
-            "012801ff00018080d0f29ce148022f271bf8e19157733a66ab93599abf4a5a62ce46d7c843577dcf98149a9d757821019d695f52def3a30099df24b42f29131f7b181cc34fddffe117b41937e37efb54";
+            "012801ff00018080d0f29ce148022703c102a77eccdcd237846ee58409e625d10e03e166901da8519c91b1a671002101a81e11167cc9d8191cb3c99b29889f4ed54784bf2193a3552764200b6b167919";
 
         static_assert(
             sizeof(GENESIS_COINBASE_TX_HEX) / sizeof(*GENESIS_COINBASE_TX_HEX) != 1,
@@ -70,7 +70,7 @@ namespace CryptoNote
         /* This is the unix timestamp of the first "mined" block (technically block 2, not the genesis block)
            You can get this value by doing "print_block 2" in XTEnetwork. It is used to know what timestamp
            to import from when the block height cannot be found in the node or the node is offline. */
-        const uint64_t GENESIS_BLOCK_TIMESTAMP = 1692821407;
+        const uint64_t GENESIS_BLOCK_TIMESTAMP = 1686748487;
 
         const size_t CRYPTONOTE_REWARD_BLOCKS_WINDOW = 100;
 

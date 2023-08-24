@@ -64,15 +64,12 @@ The binaries will be in the `src` folder when you are complete.
 ###### For Ubuntu 18.04 (Bionic) users:
 
 -   `sudo add-apt-repository "deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic 6.0 main"`
-
-###### For Everyone:
-
 -   `sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y`
 -   `wget -O - https://apt.llvm.org/Developer Tools.llvm-snapshot.gpg.key | sudo apt-key add -`
 
 *   `sudo apt-get update`
 *   `sudo apt-get install aptitude -y`
-*   `sudo aptitude install -y -o Aptitude::ProblemResolver::SolutionCost='100*canceled-actions,200*removals' build-essential clang-6.0 libstdc++-7-dev git libboost-all-dev python-pip libssl-dev`
+*   `sudo aptitude install -y build-essential clang-6.0 libstdc++-7-dev git libboost-all-dev python-pip libssl-dev`
 *   `sudo pip install cmake`
 *   `export CC=clang-6.0`
 *   `export CXX=clang++-6.0`
@@ -82,6 +79,27 @@ The binaries will be in the `src` folder when you are complete.
 *   `cd build`
 *   `cmake ..`
 *   `make`
+
+###### For Ubuntu 20.04 (focal) users:
+
+*   `wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -`
+*   `sudo add-apt-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal main`
+*   `wget https://apt.llvm.org/llvm.sh`
+*   `chmod +x llvm.sh`
+*   `sudo ./llvm.sh 16`
+*   `sudo apt-get update`
+*   `sudo apt-get install aptitude -y`
+*   `sudo aptitude install -y build-essential libstdc++-7-dev git libboost-all-dev libssl-dev cmake`
+*   `sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-16 100`
+*   `sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-16 100`
+*   `sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-16 100`
+*   `git clone -b master --single-branch https://github.com/TRRXITTE/traaitt`
+*   `cd traaitt`
+*   `mkdir build`
+*   `cd build`
+*   `cmake ..`
+*   `make`
+
 
 The binaries will be in the `src` folder when you are complete.
 
