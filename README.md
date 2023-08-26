@@ -1,25 +1,25 @@
 ![image](https://github.com/TRRXITTE/traaitt/blob/master/docs/XTE.png)
 
-#### traaitt [XTE] is a fast, easy to use and private decentralized cryptocurrency combined with a powerful ecosystem and multiple integrational software distributions.
+#### traaitt [XTE] is a fast, easy to use and private decentralized cryptocurrency.
 <!--
 [![Discord](https://img.shields.io/discord/388915017187328002?label=traaittXTE%20Discord)](https://discord.gg/cXJBsJ6) [![GitHub All Releases](https://img.shields.io/github/downloads/TRRXITTE/traaitt/total?label=Downloads)](https://github.com/TRRXITTE/traaitt/releases) [![GitHub contributors](https://img.shields.io/github/contributors-anon/TRRXITTE/traaitt?label=Contributors)](https://github.com/TRRXITTE/traaitt/graphs/contributors) [![GitHub issues](https://img.shields.io/github/issues/TRRXITTE/traaitt?label=Issues)](https://github.com/TRRXITTE/traaitt/issues) ![GitHub stars](https://img.shields.io/github/stars/TRRXITTE/traaitt?label=Github%20Stars)
 -->
-<img src="https://github.com/TRRXITTE/traaitt/blob/master/include/terminal.png">
+<img src="https://github.com/TRRXITTE/traaitt/blob/master/include/XTEterminal.png">
 
 # traaitt [XTE]
 
-Official Website:
-https://traaitt.com
+https://traaitt.com  
+https://trrxitte.com
 
-Explorer:
-https://interface.traaitt.com 
-https://network.traaitt.com
+https://explorer.traaitt.com    
+https://interface.traaitt.com  
+https://network.traaitt.com  
 
-Mining Pool:
-https://mine.traaitt.com
-
-XTEnetwork cache API:
-https://cacheapi.traaitt.com
+https://xte.trrxitte.com    
+https://mine.traaitt.com  
+  
+XTEnetwork cache API:  
+https://cacheapi.traaitt.com  
 
 
 # Installing
@@ -30,11 +30,8 @@ https://github.com/TRRXITTE/traaitt/releases
 ```
 
 
-# Graphical User Interface Wallet
-traaitt Cryptocurrency Wallet on Apple, Windows or Linux Machines.
-
-
 # Command Line Interface Wallet
+<img src="https://github.com/TRRXITTE/traaitt/blob/master/include/XTEwallet.png">
 How to properly use traaitt Cryptocurrency on Apple, Windows or Linux Machines.
 
 1st step: synchronize XTEnetwork
