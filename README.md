@@ -32,7 +32,7 @@ https://github.com/TRRXITTE/traaitt/releases
 
 # Command Line Interface Wallet
 <img src="https://github.com/TRRXITTE/traaitt/blob/master/include/XTEwallet.png">
-How to properly use traaitt Cryptocurrency on Apple, Windows or Linux Machines.
+How to properly use traaitt cryptocurrency on Apple, Windows or Linux Machines.
 
 1st step: synchronize XTEnetwork
 ```
@@ -46,17 +46,26 @@ Open traaittwallet++ to Receive, Send or simply view your current balance.
 traaitt [XTE] addresses always start with XT.
 ```
 
-### Getting Started Fast
+# traaittEnterprise XTE wallet
+<img src="https://github.com/TRRXITTE/traaitt/blob/master/include/XTEenterprise.png">
+XTE remote network wallet to use traaitt cryptocurrency.
 
-Everyone starts somewhere. If you're new or returning, you'll probably want to get in sync with the network so you can use your funds. Syncing from your own node is faster than syncing from a remote node. Here are some handy links to get you there as soon as possible.
+```
+https://github.com/TRRXITTE/traaittEnterpriseXTE/releases
+```
 
--   **Use checkpoints** - Checkpoints help your node sync faster, [learn more](http://checkpoints.traaitt.com/use.html) or [download here](http://checkpoints.traaitt.com)
--   **Learn things** - Syncing will take time, to help pass that time [learning how to use XTE](https://docs.traaitt.com/)
--   **Backup your keys** - You can generate a wallet right inside the software, or use [this generator](https://traaitt.com/wallet/) that will make a [printable physical paper wallet](https://docs.traaitt.com/guides/wallets/making-a-wallet) to put in a safe place for later.
+### Getting started
+
+Everyone starts somewhere. If you're new or returning, you'll probably want to get in sync with the network so you can use your funds. Here are somelinks to get you there as soon as possible.
+
+-   **XTE documentation** - Syncing will take time, to help pass that time [learning how to use XTE](https://documentation.trrxitte.com/)
+-   **use database** - helps your node sync faster, [download here](https://traaitt.com/binaries)
+-   **Backup your keys** - You can generate a wallet right inside the software, or use [this generator](https://explorer.traaitt.com/#paperwallet)
+
 
 
 ```
-// Copyright (c) 2020, TRRXITTE Int., incorporate
+// Copyright (c) 2023, TRRXITTE Int., incorporate
 // Copyright (c) 2018-2020, TRTL TEAM
 // Copyright (c) 2014-2018, The Monero Project
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
