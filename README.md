@@ -1,4 +1,4 @@
-![image](https://github.com/TRRXITTE/traaitt/blob/master/docs/XTE.png)
+![image](https://github.com/TRRXITTE/traaitt/blob/master/docs/XTE.png)  
 ![Download Count](https://img.shields.io/github/downloads/TRRXITTE/traaitt/total.svg)
 ![Version](https://img.shields.io/github/v/release/TRRXITTE/traaitt)
 ![GitHub stars](https://img.shields.io/github/stars/TRRXITTE/traaitt?label=Github%20Stars)
