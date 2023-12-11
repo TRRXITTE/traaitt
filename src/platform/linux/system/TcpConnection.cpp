@@ -12,6 +12,7 @@
 #include <system/InterruptedException.h>
 #include <system/Ipv4Address.h>
 #include <unistd.h>
+#include <stdexcept>
 
 namespace System
 {

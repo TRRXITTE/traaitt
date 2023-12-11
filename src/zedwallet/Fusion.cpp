@@ -12,6 +12,7 @@
 #include <wallet/WalletGreen.h>
 #include <wallet/WalletUtils.h>
 #include <zedwallet/Tools.h>
+#include <thread>
 
 size_t makeFusionTransaction(CryptoNote::WalletGreen &wallet, uint64_t threshold, uint64_t height)
 {
