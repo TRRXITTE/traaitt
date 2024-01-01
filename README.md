@@ -67,7 +67,7 @@ Everyone starts somewhere. If you're new or returning, you'll probably want to g
 
 
 ```
-// Copyright (c) 2023, TRRXITTE Int., incorporate
+// Copyright (c) 2024, TRRXITTE Int., incorporate
 // Copyright (c) 2018-2020, TRTL TEAM
 // Copyright (c) 2014-2018, The Monero Project
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
