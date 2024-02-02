@@ -76,9 +76,9 @@ namespace CryptoNote
 
         const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE =
             1000000; // size of block (bytes) after which reward for block calculated using block size
-        const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 = 20000;
+        const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 = 1000000;
 
-        const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 = 10000;
+        const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 = 1000000;
 
         const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT = CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE;
 
@@ -156,7 +156,7 @@ namespace CryptoNote
 
         const uint64_t MAX_BLOCK_SIZE_GROWTH_SPEED_DENOMINATOR = 365 * 24 * 60 * 60 / DIFFICULTY_TARGET;
 
-        const uint64_t MAX_EXTRA_SIZE = 140000;
+        const uint64_t MAX_EXTRA_SIZE = 1000000;
 
         const uint64_t MAX_EXTRA_SIZE_V2 = 1024;
 
@@ -332,7 +332,7 @@ namespace CryptoNote
     const size_t P2P_DEFAULT_WHITELIST_CONNECTIONS_PERCENT = 70;
 
     const uint32_t P2P_DEFAULT_HANDSHAKE_INTERVAL = 60; // seconds
-    const uint32_t P2P_DEFAULT_PACKET_MAX_SIZE = 100000000; // 50000000 bytes maximum packet size
+    const uint32_t P2P_DEFAULT_PACKET_MAX_SIZE = 1000000000; // 50000000 bytes maximum packet size
     const uint32_t P2P_DEFAULT_PEERS_IN_HANDSHAKE = 250;
 
     const uint32_t P2P_DEFAULT_CONNECTION_TIMEOUT = 5000; // 5 seconds
