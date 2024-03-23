@@ -9,6 +9,7 @@
 #include <functional>
 #include <queue>
 #include <stack>
+#include <cstdint>
 
 #ifndef __GLIBC__
 

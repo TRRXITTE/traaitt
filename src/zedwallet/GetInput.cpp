@@ -10,6 +10,7 @@
 
 #include <zedwallet/Sync.h>
 #include <zedwallet/Tools.h>
+#include <thread>
 
 /* Note: this is not portable, it only works with terminals that support ANSI
    codes (e.g., not Windows) - however! due to the way linenoise-cpp works,
