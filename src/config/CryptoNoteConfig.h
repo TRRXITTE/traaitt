@@ -300,7 +300,7 @@ namespace CryptoNote
     };
 
     const size_t BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT = 10000; // by default, blocks ids count in synchronizing
-    const uint64_t BLOCKS_SYNCHRONIZING_DEFAULT_COUNT = 1; // by default, blocks count in blocks downloading
+    const uint64_t BLOCKS_SYNCHRONIZING_DEFAULT_COUNT = 10; // by default, blocks count in blocks downloading
     const size_t COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT = 1000;
 
     const int P2P_DEFAULT_PORT = 14451;
