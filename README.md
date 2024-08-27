@@ -22,7 +22,7 @@ https://mine.traaitt.com
   
 XTEnetwork cache API:  
 https://cacheapi.traaitt.com  
-docs.cacheapi.trrxitte.com  
+https://docs.cacheapi.trrxitte.com  
 
 
 # Installing
