@@ -18,6 +18,7 @@
 #include <utilities/Addresses.h>
 #include <utilities/ColouredMsg.h>
 #include <utilities/PasswordContainer.h>
+#include <thread>
 
 void confirmPassword(const std::string &walletPass, const std::string &msg)
 {
