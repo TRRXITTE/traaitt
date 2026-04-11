@@ -50,10 +50,6 @@ file(GLOB_RECURSE zedwallet++ zedwallet++/*)
 if (MSVC)
     file(GLOB_RECURSE System system/* platform/windows/system/*)
 elseif (APPLE)
-    # Support both Apple Silicon (arm64) and Intel (x86_64) if specified
-    if(NOT DEFINED CMAKE_OSX_ARCHITECTURES)
-        set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "Build architectures for MacOS" FORCE)
-    endif()
     file(GLOB_RECURSE System system/* platform/osx/system/* platform/posix/system/*)
 else ()
     file(GLOB_RECURSE System system/* platform/linux/system/* platform/posix/system/*)
@@ -134,11 +130,20 @@ endif ()
 # wants to use filesystem
 add_library(__filesystem INTERFACE)
 
-# Windows works out of the box
-if (APPLE)
-    target_link_libraries(__filesystem INTERFACE /usr/local/opt/llvm/lib/libc++fs.a)
-elseif (UNIX)
-    target_link_libraries(__filesystem INTERFACE stdc++fs)
+# Windows works out of the box.
+# macOS 10.15+ (Xcode 11+ / Apple Clang 11+) ships std::filesystem in libc++;
+# no extra link is needed regardless of architecture (Intel or Apple Silicon).
+# On Linux, GCC < 9 requires explicit -lstdc++fs; GCC 9+ has it built in.
+if (UNIX AND NOT APPLE)
+    # Detect whether we need the explicit stdc++fs library (GCC < 9)
+    include(CheckCXXSourceCompiles)
+    check_cxx_source_compiles("
+        #include <filesystem>
+        int main() { return std::filesystem::exists(\"..\") ? 0 : 0; }
+    " CXX_FILESYSTEM_NO_LINK_NEEDED)
+    if (NOT CXX_FILESYSTEM_NO_LINK_NEEDED)
+        target_link_libraries(__filesystem INTERFACE stdc++fs)
+    endif ()
 endif ()
 
 if (MSVC)

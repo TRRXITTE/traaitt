@@ -11,16 +11,26 @@ on:
 jobs:
   build-matrix:
     name: Build on ${{ matrix.os }} ${{ matrix.arch }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        arch: [x86_64, arm64]
-        exclude:
-          # Windows arm64 runners are not available on GitHub Actions
-          - os: windows-latest
+        include:
+          - os: ubuntu-latest
+            runner: ubuntu-latest
+            arch: x86_64
+          - os: ubuntu-24.04-arm
+            runner: ubuntu-24.04-arm
             arch: arm64
+          - os: macos-13
+            runner: macos-13
+            arch: x86_64
+          - os: macos-14
+            runner: macos-14        # Native Apple Silicon (M1)
+            arch: arm64
+          - os: windows-latest
+            runner: windows-latest
+            arch: x86_64
     steps:
       - uses: actions/checkout@v4
       - name: Set up CMake
@@ -42,8 +52,7 @@ jobs:
         run: |
           choco install cmake ninja boost-msvc -y
       - name: Configure CMake
-        run: |
-          cmake -B build -G Ninja -DCMAKE_OSX_ARCHITECTURES=${{ matrix.arch }}
+        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DARCH=default
         shell: bash
       - name: Build
         run: |

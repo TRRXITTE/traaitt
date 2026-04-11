@@ -1,34 +1,158 @@
-# GitHub Actions CI for macOS (Apple Silicon and Intel)
+# GitHub Actions CI for macOS Apple Silicon (arm64) with sign & notarize
 
-name: Build macOS (x86_64 and arm64)
+name: Build macOS Apple Silicon (arm64)
 
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  release:
+    types: [ published ]
 
 jobs:
-  build-macos:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        arch: [x86_64, arm64]
-    name: Build on macOS ${{ matrix.arch }}
+  build-macos-arm64:
+    runs-on: macos-14          # Native Apple Silicon (M1) runner
+    name: Build · Sign · Notarize (arm64)
+
     steps:
       - uses: actions/checkout@v4
-      - name: Set up CMake
-        uses: jwlawson/actions-setup-cmake@v1
+        with:
+          submodules: recursive
+
       - name: Install dependencies
         run: |
           brew update
           brew install cmake ninja
-      - name: Configure CMake
+
+      - name: Configure CMake (arm64 native)
         run: |
-          cmake -B build -G Ninja -DCMAKE_OSX_ARCHITECTURES=${{ matrix.arch }}
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DARCH=default \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0 \
+            -DCMAKE_OSX_ARCHITECTURES=arm64
+
       - name: Build
+        run: cmake --build build --parallel
+
+      # ── Code Signing ────────────────────────────────────────────────────────
+      # Requires these repository secrets:
+      #   MACOS_CERTIFICATE          – base64-encoded Developer ID .p12 file
+      #   MACOS_CERTIFICATE_PWD      – password for the .p12 file
+      #   MACOS_CERTIFICATE_NAME     – e.g. "Developer ID Application: Acme Corp (TEAMID)"
+      #   KEYCHAIN_PASSWORD          – any strong password for the ephemeral keychain
+      - name: Import signing certificate
+        if: github.event_name == 'release' && secrets.MACOS_CERTIFICATE != ''
+        env:
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
-          cmake --build build --parallel
-      - name: Test
+          # Write certificate to disk
+          echo "$MACOS_CERTIFICATE" | base64 --decode > /tmp/certificate.p12
+
+          # Create a dedicated ephemeral keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security set-keychain-settings -t 3600 -u build.keychain
+
+          # Import certificate
+          security import /tmp/certificate.p12 \
+            -k build.keychain \
+            -P "$MACOS_CERTIFICATE_PWD" \
+            -T /usr/bin/codesign
+          security set-key-partition-list \
+            -S apple-tool:,apple: \
+            -s -k "$KEYCHAIN_PASSWORD" build.keychain
+
+          # Clean up certificate file
+          rm /tmp/certificate.p12
+
+      - name: Sign binaries
+        if: github.event_name == 'release' && secrets.MACOS_CERTIFICATE != ''
+        env:
+          MACOS_CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
         run: |
-          cd build && ctest --output-on-failure
+          # Named binaries produced by this project (see src/CMakeLists.txt)
+          BINS=(
+            build/src/XTEnetwork
+            build/src/traaittwallet++
+            build/src/cmdwalletbeta
+            build/src/XTEservice
+            build/src/XTEwalletapi
+            build/src/MINER
+            build/src/walletupgrader
+            build/src/cryptotest
+          )
+          for bin in "${BINS[@]}"; do
+            if [ -f "$bin" ]; then
+              echo "Signing: $bin"
+              codesign --force --options runtime \
+                --sign "$MACOS_CERTIFICATE_NAME" \
+                --timestamp \
+                "$bin"
+              codesign --verify --verbose "$bin"
+            fi
+          done
+
+      # ── Notarization ─────────────────────────────────────────────────────────
+      # Requires these additional repository secrets:
+      #   APPLE_ID                   – your Apple ID email
+      #   APPLE_ID_PASSWORD          – app-specific password (not your Apple ID password)
+      #   APPLE_TEAM_ID              – 10-character Team ID from developer.apple.com
+      - name: Package for notarization
+        if: github.event_name == 'release' && secrets.MACOS_CERTIFICATE != ''
+        run: |
+          mkdir -p dist
+          # Collect the signed binaries by name
+          for bin in \
+            XTEnetwork \
+            "traaittwallet++" \
+            cmdwalletbeta \
+            XTEservice \
+            XTEwalletapi \
+            MINER \
+            walletupgrader \
+            cryptotest
+          do
+            [ -f "build/src/$bin" ] && cp "build/src/$bin" dist/
+          done
+          ditto -c -k --sequesterRsrc --keepParent dist \
+            traaitt-macos-arm64.zip
+
+      - name: Notarize
+        if: github.event_name == 'release' && secrets.MACOS_CERTIFICATE != ''
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          xcrun notarytool submit traaitt-macos-arm64.zip \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_ID_PASSWORD" \
+            --team-id "$APPLE_TEAM_ID" \
+            --wait
+
+      - name: Staple notarization ticket
+        if: github.event_name == 'release' && secrets.MACOS_CERTIFICATE != ''
+        run: |
+          # Staple each binary individually (zip itself cannot be stapled)
+          find dist -type f | while read bin; do
+            xcrun stapler staple "$bin" || true
+          done
+
+      # ── Upload ───────────────────────────────────────────────────────────────
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: traaitt-macos-arm64
+          path: traaitt-macos-arm64.zip
+          if-no-files-found: warn
+
+      - name: Attach to GitHub Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: traaitt-macos-arm64.zip
