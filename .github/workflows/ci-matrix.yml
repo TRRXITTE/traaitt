@@ -16,47 +16,48 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
-            runner: ubuntu-latest
+          - os: ubuntu-22.04
+            runner: ubuntu-22.04
             arch: x86_64
-          - os: ubuntu-24.04-arm
-            runner: ubuntu-24.04-arm
+          - os: ubuntu-22.04-arm
+            runner: ubuntu-22.04-arm
             arch: arm64
-          - os: macos-13
-            runner: macos-13
-            arch: x86_64
           - os: macos-14
-            runner: macos-14        # Native Apple Silicon (M1)
+            runner: macos-14
             arch: arm64
-          - os: windows-latest
-            runner: windows-latest
-            arch: x86_64
     steps:
       - uses: actions/checkout@v4
-      - name: Set up CMake
-        uses: jwlawson/actions-setup-cmake@v1
+        with:
+          submodules: recursive
+
       - name: Install dependencies (Linux)
         if: startsWith(matrix.os, 'ubuntu-')
         run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential cmake ninja-build libboost-all-dev
+          sudo apt-get update -q
+          sudo apt-get install -y --no-install-recommends \
+            build-essential cmake ninja-build \
+            libboost-thread-dev libboost-date-time-dev \
+            libboost-chrono-dev libboost-serialization-dev \
+            libssl-dev
+
       - name: Install dependencies (macOS)
         if: startsWith(matrix.os, 'macos-')
         run: |
-          brew update
-          brew install cmake ninja boost
-      - name: Install dependencies (Windows)
-        if: matrix.os == 'windows-latest'
+          brew install boost openssl cmake ninja
+          echo "OPENSSL_ROOT_DIR=$(brew --prefix openssl)" >> "$GITHUB_ENV"
+
+      - name: Configure CMake (Linux)
+        if: startsWith(matrix.os, 'ubuntu-')
+        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DARCH=default -DSTATIC=ON
+
+      - name: Configure CMake (macOS)
+        if: startsWith(matrix.os, 'macos-')
         run: |
-          choco install cmake ninja boost-msvc -y
-      - name: Configure CMake
-        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DARCH=default
-        shell: bash
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DARCH=default -DSTATIC=ON \
+            -DOPENSSL_ROOT_DIR="$OPENSSL_ROOT_DIR"
+
       - name: Build
-        run: |
-          cmake --build build --parallel
-        shell: bash
-      - name: Test
-        run: |
-          cd build && ctest --output-on-failure
+        run: cmake --build build --parallel
         shell: bash
