@@ -248,7 +248,9 @@ endif ()
 ## Go get us some static BOOST libraries
 set(Boost_NO_BOOST_CMAKE ON)
 set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_STATIC_RUNTIME ON)
+if (MSVC)
+    set(Boost_USE_STATIC_RUNTIME ON)
+endif ()
 # Boost::system became header-only in Boost 1.69; only compiled libs listed here.
 find_package(Boost REQUIRED COMPONENTS thread date_time chrono serialization)
 message(STATUS "Boost Found: ${Boost_INCLUDE_DIRS}")
