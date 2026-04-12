@@ -1,7 +1,7 @@
-# Build directories
-build/
-build-*/
-cmake-build-*/
+# Build directories (root-level only)
+/build/
+/build-*/
+/cmake-build-*/
 
 # Release artifacts
 dist-*/

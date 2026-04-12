@@ -299,9 +299,9 @@ namespace CryptoNote
             {BLOCK_MAJOR_VERSION_6, Crypto::chukwa_slow_hash} /* UPGRADE_HEIGHT_V6 */
     };
 
-    const size_t BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT = 10000; // by default, blocks ids count in synchronizing
-    const uint64_t BLOCKS_SYNCHRONIZING_DEFAULT_COUNT = 100; // by default, blocks count in blocks downloading
-    const size_t COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT = 1000;
+    const size_t BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT = 20000; // block IDs tracked per sync cycle
+    const uint64_t BLOCKS_SYNCHRONIZING_DEFAULT_COUNT = 500;  // blocks downloaded per request batch (was 100)
+    const size_t COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT = 2000; // max blocks per fast RPC call (was 1000)
 
     const int P2P_DEFAULT_PORT = 14451;
 
@@ -326,8 +326,8 @@ namespace CryptoNote
     // warning messages that we need to upgrade our software.
     const uint8_t P2P_UPGRADE_WINDOW = 2;
 
-    const size_t P2P_CONNECTION_MAX_WRITE_BUFFER_SIZE = 32 * 1024 * 1024; // 32 MB
-    const uint32_t P2P_DEFAULT_CONNECTIONS_COUNT = 8;
+    const size_t P2P_CONNECTION_MAX_WRITE_BUFFER_SIZE = 64 * 1024 * 1024; // 64 MB (was 32 MB)
+    const uint32_t P2P_DEFAULT_CONNECTIONS_COUNT = 12; // more parallel peers (was 8)
 
     const size_t P2P_DEFAULT_WHITELIST_CONNECTIONS_PERCENT = 70;
 
@@ -341,10 +341,10 @@ namespace CryptoNote
     const size_t P2P_DEFAULT_HANDSHAKE_INVOKE_TIMEOUT = 5000; // 5 seconds
     const char P2P_STAT_TRUSTED_PUB_KEY[] = "";
 
-    const uint64_t DATABASE_WRITE_BUFFER_MB_DEFAULT_SIZE = 256; // 256 MB
-    const uint64_t DATABASE_READ_BUFFER_MB_DEFAULT_SIZE = 128; // 128 MB
-    const uint32_t DATABASE_DEFAULT_MAX_OPEN_FILES = 125; // 125 files
-    const uint16_t DATABASE_DEFAULT_BACKGROUND_THREADS_COUNT = 4; // 4 DB threads
+    const uint64_t DATABASE_WRITE_BUFFER_MB_DEFAULT_SIZE = 512; // 512 MB (was 256 MB)
+    const uint64_t DATABASE_READ_BUFFER_MB_DEFAULT_SIZE = 256; // 256 MB (was 128 MB)
+    const uint32_t DATABASE_DEFAULT_MAX_OPEN_FILES = 512; // 512 files (was 125)
+    const uint16_t DATABASE_DEFAULT_BACKGROUND_THREADS_COUNT = 8; // 8 DB threads (was 4)
 
     const char LATEST_VERSION_URL[] = "https://traait.com/cmd-latest";
 
