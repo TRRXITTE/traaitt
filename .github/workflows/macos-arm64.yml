@@ -90,9 +90,8 @@ jobs:
             codesign --verify --verbose "$bin"
           done
 
-      - name: Create DMG for notarization
-        if: github.event_name == 'release'
-        continue-on-error: true
+      # ── DMG — always created so artifact downloads are a mountable image ──
+      - name: Create DMG
         run: |
           hdiutil create -volname "traaitt-arm64" \
             -srcfolder dist-arm64 \
@@ -119,11 +118,11 @@ jobs:
         run: xcrun stapler staple traaitt-macos-arm64.dmg
 
       # ── Artifacts ────────────────────────────────────────────────────────
-      - name: Upload build artifact
+      - name: Upload DMG artifact
         uses: actions/upload-artifact@v4
         with:
           name: traaitt-macos-arm64
-          path: dist-arm64/
+          path: traaitt-macos-arm64.dmg
           retention-days: 30
 
       - name: Attach to GitHub Release
