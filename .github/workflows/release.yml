@@ -34,6 +34,9 @@ env:
   BINARIES: "XTEnetwork traaittwallet++ cmdwalletbeta XTEservice XTEwalletapi MINER walletupgrader cryptotest"
   GPG_FINGERPRINT: "9A9F4ABE01A7CC6D0474035D753023588E030016"
   GPG_IDENTITY: "TRRXITTE Int., incorporate <integration@trrxitte.com>"
+  APPLE_ID: "traaitt@gmail.com"
+  APPLE_TEAM_ID: "MC52ZBYMUT"
+  APPLE_SIGNING_IDENTITY: "Developer ID Application: Christian Benz (MC52ZBYMUT)"
 
 jobs:
 
@@ -95,7 +98,7 @@ jobs:
       - name: Sign binaries
         if: startsWith(github.ref, 'refs/tags/') || github.event.inputs.sign_macos == 'true'
         env:
-          SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          SIGNING_IDENTITY: ${{ env.APPLE_SIGNING_IDENTITY }}
         run: |
           for f in dist/*; do
             codesign --force --options runtime --timestamp \
@@ -112,8 +115,6 @@ jobs:
       - name: Notarize + Staple
         if: startsWith(github.ref, 'refs/tags/') || github.event.inputs.sign_macos == 'true'
         env:
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
         run: |
           xcrun notarytool submit traaitt-macos-arm64.dmg \
@@ -185,7 +186,7 @@ jobs:
       - name: Sign binaries
         if: startsWith(github.ref, 'refs/tags/') || github.event.inputs.sign_macos == 'true'
         env:
-          SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          SIGNING_IDENTITY: ${{ env.APPLE_SIGNING_IDENTITY }}
         run: |
           for f in dist/*; do
             codesign --force --options runtime --timestamp \
@@ -201,8 +202,6 @@ jobs:
       - name: Notarize + Staple
         if: startsWith(github.ref, 'refs/tags/') || github.event.inputs.sign_macos == 'true'
         env:
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
         run: |
           xcrun notarytool submit traaitt-macos-x86_64.dmg \
