@@ -26,6 +26,7 @@
 #include <thread>
 #include <zedwallet/Fusion.h>
 #include <zedwallet/Tools.h>
+#include <thread>
 
 bool parseAmount(std::string strAmount, uint64_t &amount)
 {

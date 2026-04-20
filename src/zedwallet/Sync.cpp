@@ -15,6 +15,7 @@
 #include <zedwallet/GetInput.h>
 #include <zedwallet/Tools.h>
 #include <zedwallet/Types.h>
+#include <thread>
 
 void checkForNewTransactions(std::shared_ptr<WalletInfo> walletInfo)
 {

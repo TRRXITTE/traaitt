@@ -11,6 +11,7 @@
 #include <common/StreamTools.h>
 #include <limits>
 #include <stdexcept>
+#include <limits>
 
 using namespace Common;
 using namespace CryptoNote;

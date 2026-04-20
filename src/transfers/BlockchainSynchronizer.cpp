@@ -17,6 +17,7 @@
 #include <sstream>
 #include <thread>
 #include <unordered_set>
+#include <thread>
 
 using namespace Common;
 using namespace Crypto;
